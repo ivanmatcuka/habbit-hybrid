@@ -12,8 +12,17 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BButton: typeof import('bootstrap-vue-next/components/BButton')['BButton']
+    BCard: typeof import('bootstrap-vue-next/components/BCard')['BCard']
+    BCardText: typeof import('bootstrap-vue-next/components/BCard')['BCardText']
     BDropdown: typeof import('bootstrap-vue-next/components/BDropdown')['BDropdown']
     BDropdownItem: typeof import('bootstrap-vue-next/components/BDropdown')['BDropdownItem']
+    BForm: typeof import('bootstrap-vue-next/components/BForm')['BForm']
+    BFormGroup: typeof import('bootstrap-vue-next/components/BFormGroup')['BFormGroup']
+    BFormInput: typeof import('bootstrap-vue-next/components/BFormInput')['BFormInput']
+    BFormText: typeof import('bootstrap-vue-next/components/BForm')['BFormText']
+    BPlaceholder: typeof import('bootstrap-vue-next/components/BPlaceholder')['BPlaceholder']
+    BSpinner: typeof import('bootstrap-vue-next/components/BSpinner')['BSpinner']
+    BTooltip: typeof import('bootstrap-vue-next/components/BTooltip')['BTooltip']
     DatePicker: typeof import('./src/components/DatePicker.vue')['default']
     ExploreContainer: typeof import('./src/components/ExploreContainer.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

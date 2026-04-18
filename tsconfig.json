@@ -3,7 +3,7 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "strict": true,
     "jsx": "preserve",
     "resolveJsonModule": true,
@@ -14,9 +14,23 @@
     "noEmit": true,
     "paths": {
       "@/*": ["./src/*"],
-      "~shared/*": ["../habbit-frontend/src/*"]
+      "~shared/pages/*": ["../habbit-frontend/src/pages/*"],
+      "~shared/components/*": ["../habbit-frontend/src/components/*"],
+      "~shared/icons/*": ["../habbit-frontend/src/icons/*"],
+      "~shared/services/*": ["../habbit-frontend/src/services/*"],
+      "~shared/utils/*": ["../habbit-frontend/src/utils/*"],
+      "~shared/stores/*": ["../habbit-frontend/src/stores/*"],
+      "~shared/stores": ["../habbit-frontend/src/stores"],
+      "~shared/UnauthLayout.vue": ["../habbit-frontend/src/UnauthLayout.vue"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "vue-shim.d.ts",
+    "env.d.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

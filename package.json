@@ -13,6 +13,7 @@
     "dev:ios": "npx cap run ios"
   },
   "dependencies": {
+    "@capacitor/android": "^8.3.0",
     "@capacitor/app": "8.1.0",
     "@capacitor/core": "8.3.0",
     "@capacitor/haptics": "8.0.2",
@@ -21,8 +22,9 @@
     "@capacitor/status-bar": "8.0.2",
     "@ionic/vue": "^8.0.0",
     "@ionic/vue-router": "^8.0.0",
-    "bootstrap-vue-next": "^0.44.1",
+    "bootstrap-vue-next": "^0.44.5",
     "ionicons": "^7.0.0",
+    "pinia": "^3.0.4",
     "vue": "^3.3.0",
     "vue-router": "^4.2.0"
   },
@@ -30,19 +32,30 @@
     "@capacitor/cli": "8.3.0",
     "@vitejs/plugin-legacy": "^5.0.0",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vue/eslint-config-typescript": "^12.0.0",
+    "@vue/eslint-config-typescript": "^14.6.0",
     "@vue/test-utils": "^2.3.0",
     "cypress": "^13.5.0",
-    "eslint": "^8.35.0",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-css-reorder": "^0.5.1",
+    "eslint-plugin-perfectionist": "^4.15.0",
+    "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-vue": "^9.9.0",
+    "jiti": "^2.6.1",
     "jsdom": "^22.1.0",
+    "prettier-eslint": "^16.4.2",
+    "prettier-plugin-css-order": "^2.2.0",
     "sass-embedded": "^1.98.0",
     "terser": "^5.4.0",
-    "typescript": "~5.9.0",
+    "typescript": "~5.8.0",
+    "unplugin-icons": "^23.0.1",
     "unplugin-vue-components": "^32.0.0",
     "vite": "^5.0.0",
     "vitest": "^0.34.6",
     "vue-tsc": "^2.1.10"
+  },
+  "peerDependencies": {
+    "moment": "^2.30.1"
   },
   "description": "An Ionic project"
 }

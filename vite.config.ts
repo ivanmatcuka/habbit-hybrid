@@ -4,8 +4,10 @@ import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import { defineConfig } from 'vite';
-import { BootstrapVueNextResolver } from 'bootstrap-vue-next';
 import Components from 'unplugin-vue-components/vite';
+import IconsResolve from 'unplugin-icons/resolver';
+import Icons from 'unplugin-icons/vite';
+import { BootstrapVueNextResolver } from 'bootstrap-vue-next';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,7 +16,11 @@ export default defineConfig({
     legacy(),
     Components({
       dts: true,
-      resolvers: [BootstrapVueNextResolver()],
+      resolvers: [BootstrapVueNextResolver(), IconsResolve()],
+    }),
+    Icons({
+      autoInstall: true,
+      compiler: 'vue3',
     }),
   ],
   resolve: {
@@ -26,5 +32,8 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
+  },
+  build: {
+    target: 'esnext',
   },
 });

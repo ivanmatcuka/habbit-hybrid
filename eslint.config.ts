@@ -1,6 +1,5 @@
 import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript';
 import eslintPluginPerfectionist from 'eslint-plugin-perfectionist';
-import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
 import pluginVue from 'eslint-plugin-vue';
 
 export default defineConfigWithVueTs(
@@ -33,6 +32,7 @@ export default defineConfigWithVueTs(
           ],
         },
       ],
+      'vue/no-deprecated-slot-attribute': ['off'],
     },
   },
   {
@@ -57,5 +57,4 @@ export default defineConfigWithVueTs(
     },
     ...eslintPluginPerfectionist.configs['recommended-natural'],
   },
-  eslintPluginPrettier,
 );

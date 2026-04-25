@@ -1,17 +1,21 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import { useUserStore } from '~shared/stores/user';
 
-import SignIn from '@/views/SignIn.vue';
+import { useUserStore } from '@/stores/user';
+import SignInScreen from '@/views/SignInScreen.vue';
+import SignOutScreen from '@/views/SignOutScreen.vue';
+import SignUpScreen from '@/views/SignUpScreen.vue';
 import TabsPage from '@/views/TabsPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     name: 'home',
     path: '/',
-    redirect: '/tabs/dashboard',
+    redirect: '/tabs',
   },
-  { component: SignIn, name: 'signin', path: '/signin' },
+  { component: SignInScreen, name: 'signin', path: '/signin' },
+  { component: SignUpScreen, name: 'signup', path: '/signup' },
+  { component: SignOutScreen, name: 'signout', path: '/signout' },
   {
     children: [
       {
@@ -19,20 +23,29 @@ const routes: Array<RouteRecordRaw> = [
         redirect: '/tabs/dashboard',
       },
       {
-        component: () => import('@/views/HomePage.vue'),
+        component: () => import('@/views/HomeTab.vue'),
         path: 'dashboard',
       },
       {
         component: () => import('@/views/HabitsTab.vue'),
+        name: 'habits',
         path: 'habits',
       },
       {
-        component: () => import('@/views/Tab3Page.vue'),
-        path: 'profile',
+        component: () => import('@/views/SettingsTab.vue'),
+        path: 'settings',
       },
     ],
     component: TabsPage,
     path: '/tabs/',
+  },
+  {
+    component: () => import('@/views/AddHabbitScreen.vue'),
+    path: '/add',
+  },
+  {
+    component: () => import('@/views/EditHabbitScreen.vue'),
+    path: '/edit/:id',
   },
 ];
 

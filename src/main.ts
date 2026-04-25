@@ -9,13 +9,6 @@ import '@ionic/vue/css/core.css';
 import '@ionic/vue/css/normalize.css';
 import '@ionic/vue/css/structure.css';
 import '@ionic/vue/css/typography.css';
-/* Optional CSS utils that can be commented out */
-import '@ionic/vue/css/padding.css';
-import '@ionic/vue/css/float-elements.css';
-import '@ionic/vue/css/text-alignment.css';
-import '@ionic/vue/css/text-transformation.css';
-import '@ionic/vue/css/flex-utils.css';
-import '@ionic/vue/css/display.css';
 /**
  * Ionic Dark Mode
  * -----------------------------------------------------
@@ -31,11 +24,9 @@ import userService from '~shared/services/user';
 
 /* Theme variables */
 import './theme/variables.scss';
-
-import { useUserStore } from '~shared/stores/user';
-
 import App from './App.vue';
 import router from './router';
+import { useUserStore } from './stores/user';
 
 const pinia = createPinia();
 const app = createApp(App).use(IonicVue).use(createBootstrap()).use(pinia).use(router);

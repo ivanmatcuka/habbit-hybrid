@@ -2,21 +2,32 @@
 
 import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
+import * as BootstrapVueNext from 'bootstrap-vue-next';
 import path from 'path';
-import { defineConfig } from 'vite';
-import Components from 'unplugin-vue-components/vite';
 import IconsResolve from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
-import { BootstrapVueNextResolver } from 'bootstrap-vue-next';
+import Components from 'unplugin-vue-components/vite';
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    target: 'esnext',
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+        silenceDeprecations: ['if-function', 'color-functions', 'global-builtin', 'import'],
+      },
+    },
+  },
   plugins: [
     vue(),
     legacy(),
     Components({
       dts: true,
-      resolvers: [BootstrapVueNextResolver(), IconsResolve()],
+      resolvers: [BootstrapVueNext.Resolvers.BootstrapVueNextResolver(), IconsResolve()],
     }),
     Icons({
       autoInstall: true,
@@ -30,10 +41,7 @@ export default defineConfig({
     },
   },
   test: {
-    globals: true,
     environment: 'jsdom',
-  },
-  build: {
-    target: 'esnext',
+    globals: true,
   },
 });

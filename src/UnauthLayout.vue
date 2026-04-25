@@ -1,6 +1,8 @@
 <template>
   <ion-content>
-    <slot />
+    <div class="w-100 h-100 d-flex flex-column align-items-center">
+      <slot />
+    </div>
   </ion-content>
 </template>
 

@@ -1,9 +1,9 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'habbit-hybrid',
-  webDir: 'dist'
+  appId: 'dev.matcuka.habbits',
+  appName: 'Habbit',
+  webDir: 'dist',
 };
 
 export default config;

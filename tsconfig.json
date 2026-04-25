@@ -21,6 +21,7 @@
       "~shared/utils/*": ["../habbit-frontend/src/utils/*"],
       "~shared/stores/*": ["../habbit-frontend/src/stores/*"],
       "~shared/stores": ["../habbit-frontend/src/stores"],
+      "~shared/types/*": ["../habbit-frontend/src/types/*"],
       "~shared/UnauthLayout.vue": ["../habbit-frontend/src/UnauthLayout.vue"]
     }
   },

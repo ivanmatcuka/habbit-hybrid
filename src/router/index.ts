@@ -40,11 +40,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/tabs/',
   },
   {
-    component: () => import('@/views/AddHabbitScreen.vue'),
+    component: () => import('@/views/AddHabitScreen.vue'),
     path: '/add',
   },
   {
-    component: () => import('@/views/EditHabbitScreen.vue'),
+    component: () => import('@/views/EditHabitScreen.vue'),
     path: '/edit/:id',
   },
 ];

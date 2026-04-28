@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
 import { useUserStore } from '@/stores/user';
+import RecoverPasswordScreen from '@/views/RecoverPasswordScreen.vue';
 import SignInScreen from '@/views/SignInScreen.vue';
 import SignOutScreen from '@/views/SignOutScreen.vue';
 import SignUpScreen from '@/views/SignUpScreen.vue';
@@ -16,6 +17,7 @@ const routes: Array<RouteRecordRaw> = [
   { component: SignInScreen, name: 'signin', path: '/signin' },
   { component: SignUpScreen, name: 'signup', path: '/signup' },
   { component: SignOutScreen, name: 'signout', path: '/signout' },
+  { component: RecoverPasswordScreen, name: 'recover-password', path: '/recover-password' },
   {
     children: [
       {

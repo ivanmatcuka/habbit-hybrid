@@ -7,7 +7,7 @@
     </ion-header>
 
     <unauth-layout>
-      <form class="d-flex flex-column my-5 gap-4" @submit="submit">
+      <form class="d-flex flex-column my-5 gap-4 w-100" @submit="submit">
         <!-- Email field -->
         <h-input
           label="Email"

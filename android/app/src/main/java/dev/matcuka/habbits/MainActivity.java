@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package dev.matcuka.habbits;
 
 import com.getcapacitor.BridgeActivity;
 

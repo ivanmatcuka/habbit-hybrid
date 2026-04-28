@@ -7,7 +7,7 @@
         </ion-button>
       </ion-buttons>
 
-      <ion-title>
+      <ion-title class="text-center">
         {{ date.format('MMM Do YYYY') }}
       </ion-title>
 

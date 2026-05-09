@@ -1,4 +1,4 @@
-package dev.matcuka.habbits;
+package dev.matcuka.flatten;
 
 import com.getcapacitor.BridgeActivity;
 

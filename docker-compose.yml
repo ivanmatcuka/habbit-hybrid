@@ -1,0 +1,13 @@
+services:
+  android_builder:
+    platform: linux/x86_64
+    build:
+      context: .
+      dockerfile: Dockerfile.android
+    container_name: android_builder
+    volumes:
+      - ./android/app/build/outputs/bundle/release:/usr/src/app/android/app/build/outputs/bundle/release:ro
+    tty: true
+
+volumes:
+  android_gradle:

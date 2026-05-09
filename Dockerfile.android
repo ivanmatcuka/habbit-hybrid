@@ -56,5 +56,7 @@ RUN keytool -genkey -v \
   -dname "C=US, O=Android, CN=Android Debug"
 
 # Capacitor build
+RUN rm -rf ./android
+RUN npx cap add android
 RUN npx cap sync
 RUN npx cap build android --keystorepath ../debug.keystore --keystorepass android --keystorealias androiddebugkey --keystorealiaspass android

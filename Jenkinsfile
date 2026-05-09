@@ -24,7 +24,7 @@ pipeline {
                 sh '''
                     chmod +x ./scripts/build.sh
                     ssh ${BUILD_USER}@${BUILD_HOST} 'bash -s' < ./scripts/build.sh
-                    scp -r ${BUILD_USER}@${BUILD_HOST}:/usr/src/app/android/app/build/outputs/bundle/release android/app/build/outputs/bundle/release
+                    scp -r ${BUILD_USER}@${BUILD_HOST}:/home/flatten/habbit-frontend/android/app/build/outputs/bundle/release android/app/build/outputs/bundle/release
                 '''
             }
         }

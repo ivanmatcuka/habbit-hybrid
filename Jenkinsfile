@@ -26,7 +26,7 @@ pipeline {
                     ssh ${BUILD_USER}@${BUILD_HOST} 'bash -s' < ./scripts/build.sh
                     mkdir -p ./android/app/build/outputs/bundle/release
                     scp -r ${BUILD_USER}@${BUILD_HOST}:/home/flatten/habbit-hybrid/android/app/build/outputs/bundle/release ./android/app/build/outputs/bundle/release
-                    ls ./android/app/build/outputs/bundle/release
+                    ls ./android/app/build/outputs/bundle/release/release
                 '''
             }
         }
@@ -34,7 +34,7 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: './package.json', fingerprint: true
+            archiveArtifacts artifacts: 'package.json', fingerprint: true
         }
     }
 }

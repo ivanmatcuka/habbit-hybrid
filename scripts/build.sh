@@ -5,7 +5,8 @@ cd habbit-hybrid
 # git pull
 
 # Build
-docker compose -f ./docker-compose.yml restart
+docker compose down
+docker compose -f ./docker-compose.yml up -d
 
 # Extract output from container
 # chmod 755 ./android

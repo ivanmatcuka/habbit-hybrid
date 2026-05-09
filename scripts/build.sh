@@ -1,4 +1,4 @@
-cd habbit-frontend
+cd habbit-hybrid
 git pull
 # npx cap build ios --xcode-export-method debugging
 npm i

@@ -10,7 +10,8 @@ docker compose -f ./docker-compose.yml restart
 # Extract output from container
 # chmod 755 ./android
 # mkdir -p ./android/app/build/outputs
-docker cp android_builder:/usr/src/app/package.json .
+docker ps
+# docker cp android_builder:/usr/src/app/package.json .
 
 # Kill
 docker compose down

@@ -5,8 +5,8 @@ git checkout development
 git pull
 
 # Build
-# docker compose -f ./docker-compose.yml up -d --build
-docker compose -f ./docker-compose.yml up -d
+docker compose -f ./docker-compose.yml up -d --build
+# docker compose -f ./docker-compose.yml up -d
 
 # Extract output from container
 # chmod 755 ./android

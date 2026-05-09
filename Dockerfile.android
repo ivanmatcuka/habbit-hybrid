@@ -42,7 +42,7 @@ RUN sdkmanager \
 COPY ./package*.json ./
 COPY . ./
 RUN npm install
-RUN npm run build
+RUN npm run build:development
 
 # Generate debug key
 RUN keytool -genkey -v \
@@ -62,4 +62,4 @@ RUN npx cap sync
 RUN npx cap build android --keystorepath ../debug.keystore --keystorepass android --keystorealias androiddebugkey --keystorealiaspass android
 
 EXPOSE 4174
-CMD ["npm", "run", "preview"]
+CMD ["npm", "run", "host:development"]

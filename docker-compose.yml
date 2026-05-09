@@ -7,3 +7,6 @@ services:
     container_name: android_builder
     volumes:
       - /usr/src/app/builder
+    ports:
+      - 4174:4174
+    restart: unless-stopped

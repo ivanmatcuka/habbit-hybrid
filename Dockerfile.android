@@ -62,4 +62,4 @@ RUN npx cap sync
 RUN npx cap build android --keystorepath ../debug.keystore --keystorepass android --keystorealias androiddebugkey --keystorealiaspass android
 
 EXPOSE 4174
-CMD ["npm", "run", "host"]
+CMD ["npm", "run", "preview"]

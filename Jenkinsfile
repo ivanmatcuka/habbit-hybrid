@@ -6,8 +6,8 @@ pipeline {
     }
 
     environment {
-        DEPLOY_USER = credentials('deploy-user')
-        DEPLOY_HOST = credentials('deploy-host')
+        BUILD_USER = credentials('build-user')
+        BUILD_HOST = credentials('build-host')
     }
 
     stages {
@@ -20,11 +20,10 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Deploying...'
-
+                echo 'Building...'
                 sh '''
                     chmod +x ./scripts/build.sh
-                    ssh ${DEPLOY_USER}@${DEPLOY_HOST} 'bash -s' < ./scripts/build.sh
+                    ssh ${BUILD_USER}@${BUILD_HOST} 'bash -s' < ./scripts/build.sh
                 '''
             }
         }

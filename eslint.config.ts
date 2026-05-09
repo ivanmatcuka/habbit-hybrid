@@ -5,9 +5,37 @@ import pluginVue from 'eslint-plugin-vue';
 export default defineConfigWithVueTs(
   {
     files: ['**/*.{ts,mts,tsx,vue}'],
-    name: 'app/files-to-lint',
   },
+  {
+    ignores: [
+      '.DS_Store',
+      'node_modules',
+      'coverage',
+      'dist',
+      'ios',
+      'android',
+      'tests',
 
+      // local env files
+      '.env.local',
+      '.env.*.local',
+
+      // Log files
+      'npm-debug.log*',
+      'yarn-debug.log*',
+      'yarn-error.log*',
+      'pnpm-debug.log*',
+
+      // Editor directories and files
+      '.idea',
+      '.vscode',
+      '*.suo',
+      '*.ntvs*',
+      '*.njsproj',
+      '*.sln',
+      '*.sw?',
+    ],
+  },
   vueTsConfigs.recommended,
   ...pluginVue.configs['flat/essential'],
 

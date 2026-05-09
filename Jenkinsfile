@@ -33,7 +33,7 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: 'package.json', fingerprint: true
+            archiveArtifacts artifacts: 'android/app/build/outputs/bundle/**/*.aab', fingerprint: true
         }
     }
 }

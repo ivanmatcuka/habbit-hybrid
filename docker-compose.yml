@@ -5,9 +5,3 @@ services:
       context: .
       dockerfile: Dockerfile.android
     container_name: android_builder
-    volumes:
-      - ./android/app/build/outputs/bundle/release:/usr/src/app/android/app/build/outputs/bundle/release
-    tty: true
-
-volumes:
-  android_gradle:

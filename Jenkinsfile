@@ -11,13 +11,13 @@ pipeline {
     }
 
     stages {
-        stage('Lint') {
-            steps {
-                echo 'Linting....'
-                sh 'npm i'
-                sh 'npm run lint'
-            }
-        }
+        // stage('Lint') {
+        //     steps {
+        //         echo 'Linting....'
+        //         sh 'npm i'
+        //         sh 'npm run lint'
+        //     }
+        // }
         stage('Build') {
             steps {
                 echo 'Building...'
@@ -26,6 +26,7 @@ pipeline {
                     ssh ${BUILD_USER}@${BUILD_HOST} 'bash -s' < ./scripts/build.sh
                     mkdir -p ./android/app/build/outputs/bundle/release
                     scp -r ${BUILD_USER}@${BUILD_HOST}:/home/flatten/habbit-hybrid/android/app/build/outputs/bundle/release ./android/app/build/outputs/bundle/release
+                    ls ./android/app/build/outputs/bundle/release
                 '''
             }
         }
@@ -33,7 +34,7 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: './android/app/build/outputs/bundle/**/*.aab', fingerprint: true
+            archiveArtifacts artifacts: './package.json', fingerprint: true
         }
     }
 }

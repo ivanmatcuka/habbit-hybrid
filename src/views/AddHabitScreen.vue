@@ -9,9 +9,11 @@
       </ion-toolbar>
     </ion-header>
 
-    <page-placeholder v-if="isLoading && !task" />
-
     <auth-layout>
+      <ion-refresher slot="fixed" @ionRefresh="handleRefresh($event)">
+        <ion-refresher-content />
+      </ion-refresher>
+
       <b-form class="d-flex flex-column gap-4" @submit="submit">
         <h2>Add Task</h2>
 
@@ -26,6 +28,7 @@
             v-model="title"
             class="px-3 rounded-1 py-2 lh-1 border-2 text-white"
             placeholder="Enter title"
+            :disabled="isLoading"
             required
           />
         </b-form-group>
@@ -40,6 +43,7 @@
           <b-form-select
             v-model="frequency"
             :options="FREQUENCY_OPTIONS"
+            :disabled="isLoading"
             required
             class="px-3 rounded-1 py-2 lh-1 border-2 text-white"
           />
@@ -55,6 +59,7 @@
           <b-form-select
             v-model="type"
             :options="TYPE_OPTIONS"
+            :disabled="isLoading"
             required
             class="px-3 rounded-1 py-2 lh-1 border-2 text-white"
           />
@@ -76,11 +81,12 @@ import {
   IonButtons,
   IonHeader,
   IonPage,
+  IonRefresher,
+  IonRefresherContent,
   IonSpinner,
   IonTitle,
   IonToolbar,
 } from '@ionic/vue';
-import PagePlaceholder from '~shared/components/PagePlaceholder.vue';
 import WebAddHabitPage from '~shared/pages/Add.vue';
 
 import AuthLayout from '@/AuthLayout.vue';
@@ -93,10 +99,11 @@ export default {
     IonButtons,
     IonHeader,
     IonPage,
+    IonRefresher,
+    IonRefresherContent,
     IonSpinner,
     IonTitle,
     IonToolbar,
-    PagePlaceholder,
   },
   extends: WebAddHabitPage,
 };

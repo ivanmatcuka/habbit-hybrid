@@ -47,7 +47,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     component: () => import('@/views/EditHabitScreen.vue'),
-    path: '/edit/:id',
+    path: '/habits/:id/edit',
   },
 ];
 

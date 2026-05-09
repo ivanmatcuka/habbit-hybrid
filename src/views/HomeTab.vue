@@ -1,8 +1,16 @@
 <template>
   <ion-page>
-    <date-picker :date="date" @update:date="date = $event" />
+    <ion-header>
+      <ion-toolbar>
+        <date-picker :date="date" @update:date="date = $event" />
+      </ion-toolbar>
+    </ion-header>
 
     <auth-layout>
+      <ion-refresher slot="fixed" @ionRefresh="handleRefresh($event)">
+        <ion-refresher-content />
+      </ion-refresher>
+
       <div class="d-flex flex-column ion-gap-4">
         <div v-if="isLoading" class="ion-gap-2">
           <h2>Loading...</h2>
@@ -61,7 +69,15 @@
 </template>
 
 <script lang="ts">
-import { IonPage } from '@ionic/vue';
+import {
+  IonHeader,
+  IonPage,
+  IonRefresher,
+  IonRefresherContent,
+  IonToolbar,
+  RefresherCustomEvent,
+} from '@ionic/vue';
+import { ComponentOptions, defineComponent } from 'vue';
 import TodoItem from '~shared/components/TodoItem.vue';
 import TodoItemPlaceholder from '~shared/components/TodoItemPlaceholder.vue';
 import WebHomePage from '~shared/pages/Home.vue';
@@ -69,8 +85,30 @@ import WebHomePage from '~shared/pages/Home.vue';
 import AuthLayout from '@/AuthLayout.vue';
 import DatePicker from '@/components/DatePicker.vue';
 
-export default {
-  components: { AuthLayout, DatePicker, IonPage, TodoItem, TodoItemPlaceholder },
+export default defineComponent({
+  components: {
+    AuthLayout,
+    DatePicker,
+    IonHeader,
+    IonPage,
+    IonRefresher,
+    IonRefresherContent,
+    IonToolbar,
+    TodoItem,
+    TodoItemPlaceholder,
+  },
+
   extends: WebHomePage,
-};
+
+  ionViewDidEnter() {
+    this.fetchTasks();
+  },
+
+  methods: {
+    async handleRefresh(event: RefresherCustomEvent) {
+      await this.fetchTasks();
+      event.target.complete();
+    },
+  },
+} as ComponentOptions);
 </script>

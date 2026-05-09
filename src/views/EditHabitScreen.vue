@@ -26,6 +26,7 @@
             v-model="task.title"
             class="px-3 rounded-1 py-2 lh-1 border-2 text-white"
             placeholder="Enter title"
+            :disabled="isLoading"
             required
           />
         </b-form-group>
@@ -40,6 +41,7 @@
           <b-form-select
             v-model="task.frequency"
             :options="FREQUENCY_OPTIONS"
+            :disabled="isLoading"
             required
             class="px-3 rounded-1 py-2 lh-1 border-2 text-white"
           />
@@ -55,6 +57,7 @@
           <b-form-select
             v-model="task.type"
             :options="TYPE_OPTIONS"
+            :disabled="isLoading"
             required
             class="px-3 rounded-1 py-2 lh-1 border-2 text-white"
           />
@@ -62,7 +65,7 @@
 
         <!-- Button -->
         <div>
-          <ion-spinner v-if="isLoading"></ion-spinner>
+          <ion-spinner v-if="isLoading" />
           <ion-button v-else type="submit" fill="outline" :disabled="isLoading">Save</ion-button>
         </div>
       </b-form>

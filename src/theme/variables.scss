@@ -162,19 +162,6 @@ ion-list-header {
   text-align: left;
 }
 
-ion-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: #{$spacer * 4};
-  height: #{$spacer * 8};
-
-  &.header-md {
-    box-shadow: none;
-  }
-}
-
 ion-tab-bar {
   height: 52px;
 }

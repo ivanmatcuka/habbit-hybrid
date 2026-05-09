@@ -23,6 +23,7 @@ declare module 'vue' {
     BSpinner: typeof import('bootstrap-vue-next/components/BSpinner')['BSpinner']
     BTooltip: typeof import('bootstrap-vue-next/components/BTooltip')['BTooltip']
     DatePicker: typeof import('./src/components/DatePicker.vue')['default']
+    PagePlaceholder: typeof import('./src/components/PagePlaceholder.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

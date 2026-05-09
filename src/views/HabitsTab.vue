@@ -7,6 +7,10 @@
     </ion-header>
 
     <auth-layout>
+      <ion-refresher slot="fixed" @ionRefresh="handleRefresh($event)">
+        <ion-refresher-content />
+      </ion-refresher>
+
       <div v-if="isLoading" class="d-flex flex-column gap-4">
         <h2 size="small">Loading...</h2>
         <habit-item-placeholder v-for="value in Array(3).fill(0)" :key="value" />
@@ -42,14 +46,25 @@
 </template>
 
 <script lang="ts">
-import { IonButton, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import {
+  IonButton,
+  IonHeader,
+  IonPage,
+  IonRefresher,
+  IonRefresherContent,
+  IonTitle,
+  IonToolbar,
+  RefresherCustomEvent,
+} from '@ionic/vue';
+import { ComponentOptions, defineComponent } from 'vue';
 import HabitItem from '~shared/components/HabitItem.vue';
 import HabitItemPlaceholder from '~shared/components/HabitItemPlaceholder.vue';
 import WebHabitsPage from '~shared/pages/Habits.vue';
+import tasksService from '~shared/services/tasks';
 
 import AuthLayout from '@/AuthLayout.vue';
 
-export default {
+export default defineComponent({
   components: {
     AuthLayout,
     HabitItem,
@@ -57,9 +72,35 @@ export default {
     IonButton,
     IonHeader,
     IonPage,
+    IonRefresher,
+    IonRefresherContent,
     IonTitle,
     IonToolbar,
   },
   extends: WebHabitsPage,
-};
+  async ionViewDidEnter() {
+    this.isLoading = true;
+
+    await this.fetchTasks();
+
+    this.isLoading = false;
+  },
+
+  methods: {
+    async fetchTasks() {
+      const { data, error } = await tasksService.getTasks();
+
+      if (error) {
+        console.error('Failed to fetch tasks:', error);
+      }
+
+      this.tasks = data ?? [];
+    },
+
+    async handleRefresh(event: RefresherCustomEvent) {
+      await this.fetchTasks();
+      event.target.complete();
+    },
+  },
+} as ComponentOptions);
 </script>

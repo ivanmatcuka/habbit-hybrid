@@ -1,18 +1,16 @@
 cd habbit-hybrid
 
 # Update
-# git checkout development
-# git pull
+git checkout development
+git pull
 
 # Build
-docker compose down
-docker compose -f ./docker-compose.yml up -d
+docker compose -f ./docker-compose.yml up -d --build
 
 # Extract output from container
-# chmod 755 ./android
-# mkdir -p ./android/app/build/outputs
-# docker ps
-docker cp android_builder:/usr/src/app/package.json .
+chmod 755 ./android
+mkdir -p ./android/app/build/outputs
+docker cp android_builder:/usr/src/app/android/app/build/outputs/bundle ./android/app/build/outputs
 
 # Kill
 docker compose down

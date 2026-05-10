@@ -1,7 +1,7 @@
 FROM node AS deploy
 
 # Plug in the web repository
-RUN git clone https://github.com/ivanmatcuka/habbit-frontend.git /usr/src/app/habbit-frontend
+RUN git clone -b development https://github.com/ivanmatcuka/habbit-frontend.git /usr/src/app/habbit-frontend
 WORKDIR /usr/src/app/habbit-frontend
 RUN npm i
 

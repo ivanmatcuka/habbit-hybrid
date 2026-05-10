@@ -41,8 +41,9 @@ RUN sdkmanager \
 # Copy and install NPM project
 COPY ./package*.json ./
 COPY . ./
-# RUN npm install
-# RUN npm run build:development
+RUN npm install
+RUN npm run build:development
+RUN npx cap sync
 
 # Generate debug key
 RUN keytool -genkey -v \

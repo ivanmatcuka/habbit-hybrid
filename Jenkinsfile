@@ -31,7 +31,7 @@ pipeline {
             agent {
                 dockerfile {
                     filename 'Dockerfile.android'
-                    args '-v /tmp:/usr/src/app/android/app/build/outputs/bundle'
+                    args '-v ${WORKSPACE}/artifacts:/artifacts'
                 }
             }
             steps {
@@ -46,7 +46,7 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: '/tmp/**/*.aab', fingerprint: true
+            archiveArtifacts artifacts: 'artifacts/**/*.aab', fingerprint: true
         }
     }
 }

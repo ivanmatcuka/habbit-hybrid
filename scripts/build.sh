@@ -25,3 +25,6 @@ npm run build:development
 npx cap sync
 npm run build:android
 
+mkdir -p ./artifacts
+cp ./android/app/build/outputs/bundle/**/*.aab ./artifacts/
+

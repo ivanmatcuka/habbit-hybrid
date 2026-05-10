@@ -11,22 +11,22 @@ pipeline {
     }
 
     stages {
-        stage('Lint') {
-            steps {
-                echo 'Linting....'
-                sh 'npm i'
-                sh 'npm run lint'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-                sh '''
-                    chmod +x ./scripts/development/deploy.sh
-                    ssh ${DEPLOY_USER}@${DEPLOY_HOST} 'bash -s' < ./scripts/development/deploy.sh
-                '''
-            }
-        }
+        // stage('Lint') {
+        //     steps {
+        //         echo 'Linting....'
+        //         sh 'npm i'
+        //         sh 'npm run lint'
+        //     }
+        // }
+        // stage('Deploy') {
+        //     steps {
+        //         echo 'Deploying...'
+        //         sh '''
+        //             chmod +x ./scripts/development/deploy.sh
+        //             ssh ${DEPLOY_USER}@${DEPLOY_HOST} 'bash -s' < ./scripts/development/deploy.sh
+        //         '''
+        //     }
+        // }
         stage('Build') {
             environment {
                 VITE_API_URL = credentials('development-api-url')

@@ -39,10 +39,8 @@ pipeline {
             steps {
                 echo 'Building...'
                 sh '''
-                    npm install
-                    npm run build:development
-                    npx cap sync
-                    npm run build:android
+                    chmod +x ./scripts/build.sh
+                    source ./scripts/build.sh
                 '''
 
             // chmod +x ./scripts/build.sh

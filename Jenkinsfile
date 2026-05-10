@@ -6,29 +6,27 @@ pipeline {
     }
 
     environment {
-        BUILD_USER = credentials('build-user')
-        BUILD_HOST = credentials('build-host')
+        DEPLOY_USER = credentials('deploy-user')
+        DEPLOY_HOST = credentials('deploy-host')
     }
 
     stages {
-        // stage('Lint') {
-        //     steps {
-        //         echo 'Linting....'
-        //         sh 'npm i'
-        //         sh 'npm run lint'
-        //     }
-        // }
-        // stage('Deploy') {
-        //     steps {
-        //         echo 'Deploying...'
-        //         sh '''
-        //             chmod +x ./scripts/build.sh
-        //             ssh ${BUILD_USER}@${BUILD_HOST} 'bash -s' < ./scripts/build.sh
-        //             mkdir -p ./artifacts
-        //             scp -r ${BUILD_USER}@${BUILD_HOST}:/home/flatten/habbit-hybrid/tmp/release ./artifacts
-        //         '''
-        //     }
-        // }
+        stage('Lint') {
+            steps {
+                echo 'Linting....'
+                sh 'npm i'
+                sh 'npm run lint'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                sh '''
+                    chmod +x ./scripts/deploy.sh
+                    ssh ${DEPLOY_USER}@${DEPLOY_HOST} 'bash -s' < ./scripts/deploy.sh
+                '''
+            }
+        }
         stage('Build') {
             agent {
                 dockerfile {
@@ -42,18 +40,13 @@ pipeline {
                     chmod +x ./scripts/build.sh
                     ./scripts/build.sh
                 '''
-
-            // chmod +x ./scripts/build.sh
-            // ssh ${BUILD_USER}@${BUILD_HOST} 'bash -s' < ./scripts/build.sh
-            // mkdir -p ./artifacts
-            // scp -r ${BUILD_USER}@${BUILD_HOST}:/home/flatten/habbit-hybrid/tmp/release ./artifacts
             }
         }
     }
 
-    // post {
-    //     always {
-    //         archiveArtifacts artifacts: '/tmp/**/*.aab', fingerprint: true
-    //     }
-    // }
+    post {
+        always {
+            archiveArtifacts artifacts: '/tmp/**/*.aab', fingerprint: true
+        }
+    }
 }

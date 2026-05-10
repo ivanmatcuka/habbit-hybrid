@@ -8,6 +8,7 @@ pipeline {
     environment {
         DEPLOY_USER = credentials('deploy-user')
         DEPLOY_HOST = credentials('deploy-host')
+        VITE_API_URL = credentials('development-api-url')
     }
 
     stages {

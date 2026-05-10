@@ -40,7 +40,7 @@ pipeline {
                 echo 'Building...'
                 sh '''
                     chmod +x ./scripts/build.sh
-                    source ./scripts/build.sh
+                    ./scripts/build.sh
                 '''
 
             // chmod +x ./scripts/build.sh

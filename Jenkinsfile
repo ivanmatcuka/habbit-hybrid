@@ -33,14 +33,16 @@ pipeline {
             agent {
                 dockerfile {
                     filename 'Dockerfile.android'
-                    additionalBuildArgs  '--build-arg version=1.0.2'
                     args '-v /tmp:/usr/src/app/android/app/build/outputs/bundle'
                 }
             }
             steps {
                 echo 'Building...'
                 sh '''
-                    ls -l /tmp
+                    npm i
+                    npm run build:development
+                    npx cap sync
+                    npm run build:android
                 '''
 
             // chmod +x ./scripts/build.sh
@@ -51,9 +53,9 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            archiveArtifacts artifacts: '/tmp/**/*.aab', fingerprint: true
-        }
-    }
+    // post {
+    //     always {
+    //         archiveArtifacts artifacts: '/tmp/**/*.aab', fingerprint: true
+    //     }
+    // }
 }

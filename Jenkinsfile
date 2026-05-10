@@ -40,13 +40,8 @@ pipeline {
                     chmod +x ./scripts/build.sh
                     ./scripts/build.sh
                 '''
+                archiveArtifacts artifacts: 'artifacts/*.aab', fingerprint: true
             }
-        }
-    }
-
-    post {
-        always {
-            archiveArtifacts artifacts: 'artifacts/*.aab', fingerprint: true
         }
     }
 }

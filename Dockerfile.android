@@ -55,11 +55,5 @@ RUN keytool -genkey -v \
   -validity 10000 \
   -dname "C=US, O=Android, CN=Android Debug"
 
-# Capacitor build
-RUN rm -rf ./android
-RUN npx cap add android
-RUN npx cap sync
-RUN npx cap build android --keystorepath ../debug.keystore --keystorepass android --keystorealias androiddebugkey --keystorealiaspass android
-
 EXPOSE 4174
 CMD ["npm", "run", "host:development"]

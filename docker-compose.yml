@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.android
     container_name: android_builder
     volumes:
-      - /usr/src/app/builder
+      - ./tmp:/usr/src/app/android/app/build/outputs/bundle
     ports:
       - 4174:4174
     restart: unless-stopped

@@ -46,7 +46,7 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: 'artifacts/**/*.aab', fingerprint: true
+            archiveArtifacts artifacts: '${WORKSPACE}/artifacts/**/*.aab', fingerprint: true
         }
     }
 }

@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Build') {
             environment {
-                VITE_API_URL = credentials('development-api-url')
+                VITE_API_URL = 'http://192.168.2.128:8000'
             }
             agent {
                 dockerfile {
@@ -41,10 +41,6 @@ pipeline {
                 echo 'Building...'
 
                 sh '''
-                    rm .env.development.local
-                    touch .env.development.local
-                    echo VITE_API_URL=${VITE_API_URL} >> .env.development.local
-
                     chmod +x ./scripts/development/build.sh
                     ./scripts/development/build.sh
                 '''

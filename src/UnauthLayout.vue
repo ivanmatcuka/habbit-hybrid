@@ -2,10 +2,8 @@
   <ion-content>
     <slot />
   </ion-content>
-  <ion-footer v-if="!isProd">
-    <span class="p-2">
-      {{ apiUrl }}
-    </span>
+  <ion-footer>
+    <span class="p-2"> API URL: {{ apiUrl }} </span>
   </ion-footer>
 </template>
 

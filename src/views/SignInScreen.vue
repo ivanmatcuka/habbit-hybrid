@@ -37,18 +37,23 @@
           <ion-label v-else color="danger">Error occurred. Please try again later </ion-label>
         </div>
 
-        <div class="d-flex gap-2 flex-wrap">
-          <ion-button :disabled="isLoading" type="submit" fill="outline"> Sign In </ion-button>
-          <ion-button
-            :disabled="isLoading"
-            fill="solid"
-            router-link="/signup"
-            router-direction="forward"
-            >Sign Up</ion-button
-          >
-          <ion-button :disabled="isLoading" fill="clear" router-link="/recover-password"
-            >Forgot Password?</ion-button
-          >
+        <div class="d-flex flex-column gap-2">
+          <div class="d-flex align-items-center gap-2">
+            <ion-spinner v-if="isLoading"></ion-spinner>
+            <ion-button v-else type="submit" fill="outline"> Sign In </ion-button>
+            <ion-button
+              :disabled="isLoading"
+              fill="solid"
+              router-link="/signup"
+              router-direction="forward"
+              >Sign Up</ion-button
+            >
+          </div>
+          <div>
+            <ion-button :disabled="isLoading" fill="clear" router-link="/recover-password"
+              >Forgot Password?</ion-button
+            >
+          </div>
         </div>
       </form>
     </unauth-layout>
@@ -58,7 +63,7 @@
 <script lang="ts">
 import { IonButton, IonHeader, IonLabel, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import HInput from '~shared/components/HInput.vue';
-import SignIn from '~shared/pages/SignIn.vue';
+import WebSignIn from '~shared/pages/SignIn.vue';
 
 import UnauthLayout from '@/UnauthLayout.vue';
 
@@ -73,6 +78,6 @@ export default {
     IonToolbar,
     UnauthLayout,
   },
-  extends: SignIn,
+  extends: WebSignIn,
 };
 </script>

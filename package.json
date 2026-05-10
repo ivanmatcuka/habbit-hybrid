@@ -10,7 +10,8 @@
     "test:e2e": "cypress run",
     "test:unit": "vitest",
     "lint": "eslint .",
-    "dev:ios": "npx cap run ios",
+    "dev:ios": "ionic capacitor run ios --livereload --external",
+    "dev:android": "ionic capacitor run android --livereload --external",
     "build:development": "vue-tsc && vite build --mode development",
     "host:development": "vite dev --host --port 4174",
     "android:debug": "cd android && ./gradlew assembleDebug && cd .."

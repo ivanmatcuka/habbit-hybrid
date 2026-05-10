@@ -40,7 +40,7 @@ pipeline {
                     chmod +x ./scripts/development/build.sh
                     ./scripts/development/build.sh
                 '''
-                archiveArtifacts artifacts: 'artifacts/*.aab', fingerprint: true
+                archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
             }
         }
     }

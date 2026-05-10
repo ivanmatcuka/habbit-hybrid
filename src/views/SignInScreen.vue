@@ -61,7 +61,15 @@
 </template>
 
 <script lang="ts">
-import { IonButton, IonHeader, IonLabel, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import {
+  IonButton,
+  IonHeader,
+  IonLabel,
+  IonPage,
+  IonSpinner,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/vue';
 import HInput from '~shared/components/HInput.vue';
 import WebSignIn from '~shared/pages/SignIn.vue';
 
@@ -74,6 +82,7 @@ export default {
     IonHeader,
     IonLabel,
     IonPage,
+    IonSpinner,
     IonTitle,
     IonToolbar,
     UnauthLayout,

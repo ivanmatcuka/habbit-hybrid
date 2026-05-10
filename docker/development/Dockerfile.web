@@ -12,7 +12,7 @@ COPY . ./
 
 RUN npm install
 RUN npm run build:development
-RUN npx cap sync
+RUN npx cap sync web
 
 EXPOSE 4174
 CMD [ "npm", "run", "host:development" ]

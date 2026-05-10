@@ -22,7 +22,7 @@ keytool -genkey -v \
 
 npm install
 npm run build:development
-npx cap sync
+npx cap sync android
 npm run android:debug
 
 mkdir -p ./artifacts

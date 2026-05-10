@@ -6,7 +6,7 @@ services:
       dockerfile: ./docker/development/Dockerfile.web
     container_name: habits_hybrid
     env_file:
-      - .env.local.development
+      - .env.development.local
     ports:
       - 4174:4174
     restart: unless-stopped

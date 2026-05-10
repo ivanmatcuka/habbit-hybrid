@@ -41,9 +41,9 @@ pipeline {
                 echo 'Building...'
 
                 sh '''
-                    rm .env.local.development
-                    touch .env.local.development
-                    echo VITE_API_URL=${VITE_API_URL} >> .env.local.development
+                    rm .env.development.local
+                    touch .env.development.local
+                    echo VITE_API_URL=${VITE_API_URL} >> .env.development.local
 
                     chmod +x ./scripts/development/build.sh
                     ./scripts/development/build.sh

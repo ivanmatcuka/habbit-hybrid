@@ -8,7 +8,6 @@ pipeline {
     environment {
         DEPLOY_USER = credentials('deploy-user')
         DEPLOY_HOST = credentials('deploy-host')
-        VITE_API_URL = credentials('development-api-url')
     }
 
     stages {
@@ -29,15 +28,23 @@ pipeline {
             }
         }
         stage('Build') {
+            environment {
+                VITE_API_URL = credentials('development-api-url')
+            }
             agent {
                 dockerfile {
                     filename './docker/development/Dockerfile.android'
-                    args '-v ${WORKSPACE}/artifacts:/artifacts'
+                    args '-v ${WORKSPACE}/artifacts:/artifacts  -e VITE_API_URL=${VITE_API_URL}'
                 }
             }
             steps {
                 echo 'Building...'
+
                 sh '''
+                    rm .env.local.development
+                    touch .env.local.development
+                    echo VITE_API_URL=${VITE_API_URL} >> .env.local.development
+
                     chmod +x ./scripts/development/build.sh
                     ./scripts/development/build.sh
                 '''

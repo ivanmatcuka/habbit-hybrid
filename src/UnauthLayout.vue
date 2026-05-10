@@ -2,7 +2,7 @@
   <ion-content>
     <slot />
   </ion-content>
-  <ion-footer v-if="!isProd">
+  <ion-footer v-if="!apiUrl">
     <span class="p-2">
       {{ apiUrl }}
     </span>
@@ -34,9 +34,6 @@ export default defineComponent({
   computed: {
     apiUrl() {
       return import.meta.env.VITE_API_URL;
-    },
-    isProd() {
-      return import.meta.env.PROD;
     },
   },
 } as Parameters<typeof defineComponent>);

@@ -1,4 +1,4 @@
-FROM node
+FROM node AS build
 
 # Install dependencies
 RUN apt update && apt upgrade -y && apt install -y \
@@ -38,13 +38,6 @@ RUN sdkmanager \
   "platforms;android-34" \
   "build-tools;34.0.0"
 
-# Copy and install NPM project
-COPY ./package*.json ./
-COPY . ./
-RUN npm install
-RUN npm run build:development
-RUN npx cap sync
-
 # Generate debug key
 RUN keytool -genkey -v \
   -keystore debug.keystore \
@@ -56,5 +49,3 @@ RUN keytool -genkey -v \
   -validity 10000 \
   -dname "C=US, O=Android, CN=Android Debug"
 
-# EXPOSE 4174
-# CMD ["npm", "run", "host:development"]

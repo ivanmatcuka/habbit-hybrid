@@ -39,6 +39,9 @@ pipeline {
             steps {
                 echo 'Building...'
                 sh '''
+                    npm install
+                    npm run build:development
+                    npx cap sync
                     npm run build:android
                 '''
 

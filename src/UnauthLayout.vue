@@ -1,9 +1,12 @@
 <template>
   <ion-content>
-    <!-- <div class="w-100 h-100 d-flex flex-column align-items-center"> -->
     <slot />
-    <!-- </div> -->
   </ion-content>
+  <ion-footer v-if="!isProd">
+    <span class="p-2">
+      {{ apiUrl }}
+    </span>
+  </ion-footer>
 </template>
 
 <style lang="scss">
@@ -28,5 +31,13 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   components: { IonContent },
+  computed: {
+    apiUrl() {
+      return import.meta.env.VITE_API_URL;
+    },
+    isProd() {
+      return import.meta.env.PROD;
+    },
+  },
 } as Parameters<typeof defineComponent>);
 </script>

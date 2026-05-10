@@ -11,7 +11,6 @@ COPY ./package*.json ./
 COPY . ./
 
 RUN npm install
-RUN npm run build:development
 RUN npx cap sync
 RUN npm run build:development
 

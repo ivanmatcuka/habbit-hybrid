@@ -1,7 +1,13 @@
+pwd
+
 # Plug in the web repository
 rm -rf ../habbit-frontend
 git clone https://github.com/ivanmatcuka/habbit-frontend.git ../habbit-frontend
-cd ../habbit-frontend && npm i && cd ../habbit-hybrid
+cd ../habbit-frontend
+npm i
+
+cd ..
+ls -l
 
 npm install
 npm run build:development

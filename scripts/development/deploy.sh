@@ -1,6 +1,7 @@
 cd habbit-hybrid
 
 git reset --hard
+git checkout development
 git pull
 
 docker compose down

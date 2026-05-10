@@ -8,7 +8,7 @@
     "build": "vue-tsc && vite build",
     "build:development": "vue-tsc && vite build --mode development",
     "preview": "vite preview",
-    "host:development": "npm run build:android && vite dev --port 4174 --host",
+    "host:development": "vite dev --port 4174 --host",
     "build:android": "npx cap build android --keystorepath ../debug.keystore --keystorepass android --keystorealias androiddebugkey --keystorealiaspass android",
     "test:e2e": "cypress run",
     "test:unit": "vitest",

@@ -30,7 +30,7 @@ pipeline {
         stage('Build') {
             agent {
                 dockerfile {
-                    filename 'Dockerfile.android'
+                    filename './scripts/development/Dockerfile.android'
                     args '-v ${WORKSPACE}/artifacts:/artifacts'
                 }
             }

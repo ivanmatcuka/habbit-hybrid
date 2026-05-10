@@ -1,0 +1,18 @@
+FROM node AS deploy
+
+# Plug in the web repository
+RUN git clone https://github.com/ivanmatcuka/habbit-frontend.git /usr/src/app/habbit-frontend
+WORKDIR /usr/src/app/habbit-frontend
+RUN npm i
+
+WORKDIR /usr/src/app/habbit-hybrid
+
+COPY ./package*.json ./
+COPY . ./
+
+RUN npm install
+RUN npm run build:development
+RUN npx cap sync
+RUN npm run build:development
+
+CMD [ "npm", "run", "host:development" ]

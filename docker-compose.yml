@@ -1,12 +1,10 @@
 services:
-  android_builder:
+  habits_hybrid:
     platform: linux/x86_64
     build:
       context: .
-      dockerfile: Dockerfile.android
-    container_name: android_builder
-    volumes:
-      - ./tmp:/usr/src/app/android/app/build/outputs/bundle
+      dockerfile: ./scripts/development/Dockerfile.web
+    container_name: habits_hybrid
     ports:
       - 4174:4174
     restart: unless-stopped

@@ -2,8 +2,10 @@
   <ion-content>
     <slot />
   </ion-content>
-  <ion-footer>
-    <span class="p-2"> API URL: {{ apiUrl }} </span>
+  <ion-footer v-if="!isProd">
+    <ion-toolbar>
+      <span class="p-2"> API URL: {{ apiUrl }} </span>
+    </ion-toolbar>
   </ion-footer>
 </template>
 
@@ -24,11 +26,11 @@ ion-content::part(scroll) {
 </style>
 
 <script lang="ts">
-import { IonContent, IonFooter } from '@ionic/vue';
+import { IonContent, IonFooter, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  components: { IonContent, IonFooter },
+  components: { IonContent, IonFooter, IonToolbar },
   computed: {
     apiUrl() {
       return import.meta.env.VITE_API_URL;

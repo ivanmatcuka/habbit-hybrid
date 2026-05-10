@@ -3,8 +3,10 @@ services:
     platform: linux/x86_64
     build:
       context: .
-      dockerfile: ./scripts/development/Dockerfile.web
+      dockerfile: ./docker/development/Dockerfile.web
     container_name: habits_hybrid
+    env_file:
+      - .env.local.development
     ports:
       - 4174:4174
     restart: unless-stopped

@@ -11,8 +11,8 @@ COPY ./package*.json ./
 COPY . ./
 
 RUN npm install
-RUN npx cap sync
 RUN npm run build:development
+RUN npx cap sync
 
 EXPOSE 4174
 CMD [ "npm", "run", "host:development" ]

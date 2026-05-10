@@ -26,5 +26,5 @@ npx cap sync
 npm run android:debug
 
 mkdir -p ./artifacts
-cp ./android/app/build/outputs/bundle/**/*.apk ./artifacts/
+cp ./android/app/build/outputs/**/*.apk ./artifacts/
 

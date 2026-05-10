@@ -55,5 +55,5 @@ RUN keytool -genkey -v \
   -validity 10000 \
   -dname "C=US, O=Android, CN=Android Debug"
 
-EXPOSE 4174
-CMD ["npm", "run", "host:development"]
+# EXPOSE 4174
+# CMD ["npm", "run", "host:development"]

@@ -6,14 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "build:development": "vue-tsc && vite build --mode development",
     "preview": "vite preview",
-    "host:development": "vite dev --port 4174 --host",
-    "build:android": "npx cap build android --keystorepath ../debug.keystore --keystorepass android --keystorealias androiddebugkey --keystorealiaspass android",
     "test:e2e": "cypress run",
     "test:unit": "vitest",
     "lint": "eslint .",
-    "dev:ios": "npx cap run ios"
+    "dev:ios": "npx cap run ios",
+    "build:development": "vue-tsc && vite build --mode development",
+    "host:development": "vite dev --host --port 4174",
+    "android:debug": "cd android && ./gradlew assembleDebug && cd .."
   },
   "dependencies": {
     "@capacitor/android": "^8.3.0",

@@ -23,8 +23,8 @@ keytool -genkey -v \
 npm install
 npm run build:development
 npx cap sync
-npm run build:android
+npm run android:debug
 
 mkdir -p ./artifacts
-cp ./android/app/build/outputs/bundle/**/*.aab ./artifacts/
+cp ./android/app/build/outputs/bundle/**/*.apk ./artifacts/
 

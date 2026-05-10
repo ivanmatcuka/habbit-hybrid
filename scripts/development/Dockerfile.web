@@ -15,4 +15,5 @@ RUN npm run build:development
 RUN npx cap sync
 RUN npm run build:development
 
+EXPOSE 4174
 CMD [ "npm", "run", "host:development" ]

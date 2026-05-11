@@ -1,0 +1,12 @@
+FROM node22.13 AS build
+
+# Install dependencies
+# RUN apt update && apt upgrade -y && apt install -y \
+#   openjdk-21-jdk \
+#   wget \
+#   unzip \
+#   build-essential \
+#   git \
+#   python3
+
+WORKDIR /usr/src/app

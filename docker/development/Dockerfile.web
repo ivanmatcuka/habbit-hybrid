@@ -1,4 +1,4 @@
-FROM node AS deploy
+FROM node:22.13 AS deploy
 
 # Plug in the web repository
 RUN git clone -b development https://github.com/ivanmatcuka/habbit-frontend.git /usr/src/app/habbit-frontend

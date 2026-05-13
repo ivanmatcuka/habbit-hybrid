@@ -19,6 +19,9 @@ pipeline {
             }
         }
         stage('Deploy') {
+            environment {
+                PROJECT_NAME = 'habits-hybrid'
+            }
             steps {
                 echo 'Deploying...'
                 sh '''
@@ -30,6 +33,8 @@ pipeline {
         stage('Build') {
             environment {
                 VITE_API_URL = 'http://192.168.2.128:8000'
+                LIB_PROJECT_NAME = 'habits-frontend'
+                LIB_GIT_SOURCE = 'https://github.com/ivanmatcuka/habits-frontend.git'
             }
             agent {
                 dockerfile {

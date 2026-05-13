@@ -10,10 +10,10 @@
 
 <script lang="ts">
 import { IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import WebSignOut from '~shared/pages/SignOut.vue';
+import { SignOutPage } from 'habits-frontend/pages';
 
 export default {
   components: { IonHeader, IonPage, IonTitle, IonToolbar },
-  extends: WebSignOut,
+  extends: SignOutPage,
 };
 </script>

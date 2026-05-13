@@ -13,16 +13,7 @@
     "skipLibCheck": true,
     "noEmit": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "~shared/pages/*": ["../habbit-frontend/src/pages/*"],
-      "~shared/components/*": ["../habbit-frontend/src/components/*"],
-      "~shared/icons/*": ["../habbit-frontend/src/icons/*"],
-      "~shared/services/*": ["../habbit-frontend/src/services/*"],
-      "~shared/utils/*": ["../habbit-frontend/src/utils/*"],
-      "~shared/stores/*": ["../habbit-frontend/src/stores/*"],
-      "~shared/stores": ["../habbit-frontend/src/stores"],
-      "~shared/types/*": ["../habbit-frontend/src/types/*"],
-      "~shared/UnauthLayout.vue": ["../habbit-frontend/src/UnauthLayout.vue"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [

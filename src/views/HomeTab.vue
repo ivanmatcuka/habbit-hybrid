@@ -77,10 +77,10 @@ import {
   IonToolbar,
   RefresherCustomEvent,
 } from '@ionic/vue';
+import { TodoItem } from 'habits-frontend/components';
+import { TodoItemPlaceholder } from 'habits-frontend/components';
+import { HomePage } from 'habits-frontend/pages';
 import { ComponentOptions, defineComponent } from 'vue';
-import TodoItem from '~shared/components/TodoItem.vue';
-import TodoItemPlaceholder from '~shared/components/TodoItemPlaceholder.vue';
-import WebHomePage from '~shared/pages/Home.vue';
 
 import AuthLayout from '@/AuthLayout.vue';
 import DatePicker from '@/components/DatePicker.vue';
@@ -98,7 +98,7 @@ export default defineComponent({
     TodoItemPlaceholder,
   },
 
-  extends: WebHomePage,
+  extends: HomePage,
 
   ionViewDidEnter() {
     this.fetchTasks();

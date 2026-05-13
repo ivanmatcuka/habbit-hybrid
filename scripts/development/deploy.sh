@@ -1,4 +1,4 @@
-cd habbit-hybrid
+cd ${PROJECT_NAME}
 
 git reset --hard
 git checkout development

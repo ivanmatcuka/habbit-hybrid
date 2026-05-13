@@ -1,7 +1,6 @@
 import { IonicVue } from '@ionic/vue';
 import { createBootstrap } from 'bootstrap-vue-next';
-import { createPinia } from 'pinia';
-import { createApp } from 'vue';
+import { localStorageService, userService } from 'habits-frontend/services';
 import '@ionic/vue/css/palettes/dark.always.css';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -18,20 +17,18 @@ import '@ionic/vue/css/typography.css';
 /* @import '@ionic/vue/css/palettes/dark.always.css'; */
 /* @import '@ionic/vue/css/palettes/dark.class.css'; */
 import '@ionic/vue/css/palettes/dark.system.css';
-import RowItem from '~shared/components/RowItem.vue';
-import localStorageService from '~shared/services/localStorage';
-import userService from '~shared/services/user';
+import { createPinia } from 'pinia';
 
 /* Theme variables */
 import './theme/variables.scss';
+import { createApp } from 'vue';
+
 import App from './App.vue';
 import router from './router';
 import { useUserStore } from './stores/user';
 
 const pinia = createPinia();
 const app = createApp(App).use(IonicVue).use(createBootstrap()).use(pinia).use(router);
-
-app.component('RowItem', RowItem);
 
 if (localStorageService.getAccessToken()) {
   const userStore = useUserStore();

@@ -1,9 +1,11 @@
 pwd=$(pwd)
 
 # Plug in the web repository
-rm -rf ../habbit-frontend
-git clone https://github.com/ivanmatcuka/habbit-frontend.git ../habbit-frontend
-cd ../habbit-frontend
+if [! -d "$LIB_PROJECT_NAME" ];then
+	git clone ${LIB_GIT_SOURCE} ../${LIB_PROJECT_NAME}
+fi
+
+cd ../${LIB_PROJECT_NAME}
 npm i
 
 cd ${pwd}

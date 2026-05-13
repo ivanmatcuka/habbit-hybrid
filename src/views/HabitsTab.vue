@@ -56,11 +56,11 @@ import {
   IonToolbar,
   RefresherCustomEvent,
 } from '@ionic/vue';
+import { HabitItemPlaceholder } from 'habits-frontend/components';
+import { HabitItem } from 'habits-frontend/components';
+import { HabitsPage } from 'habits-frontend/pages';
+import { tasksService } from 'habits-frontend/services';
 import { ComponentOptions, defineComponent } from 'vue';
-import HabitItem from '~shared/components/HabitItem.vue';
-import HabitItemPlaceholder from '~shared/components/HabitItemPlaceholder.vue';
-import WebHabitsPage from '~shared/pages/Habits.vue';
-import tasksService from '~shared/services/tasks';
 
 import AuthLayout from '@/AuthLayout.vue';
 
@@ -77,7 +77,7 @@ export default defineComponent({
     IonTitle,
     IonToolbar,
   },
-  extends: WebHabitsPage,
+  extends: HabitsPage,
   async ionViewDidEnter() {
     this.isLoading = true;
 

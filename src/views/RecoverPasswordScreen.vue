@@ -43,8 +43,8 @@
 
 <script lang="ts">
 import { IonButton, IonHeader, IonLabel, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import HInput from '~shared/components/HInput.vue';
-import WebRecoverPasswordPage from '~shared/pages/RecoverPassword.vue';
+import { HInput } from 'habits-frontend/components';
+import { RecoverPasswordPage } from 'habits-frontend/pages';
 
 import UnauthLayout from '@/UnauthLayout.vue';
 
@@ -59,6 +59,6 @@ export default {
     IonToolbar,
     UnauthLayout,
   },
-  extends: WebRecoverPasswordPage,
+  extends: RecoverPasswordPage,
 };
 </script>

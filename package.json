@@ -29,6 +29,7 @@
     "@ionic/vue-router": "^8.0.0",
     "bootstrap": "^5.3.7",
     "bootstrap-vue-next": "^0.30.4",
+    "habits-frontend": "file:../habbit-frontend",
     "ionicons": "^7.0.0",
     "pinia": "^3.0.4",
     "vue": "^3.3.0",
@@ -62,6 +63,9 @@
   },
   "peerDependencies": {
     "moment": "^2.30.1"
+  },
+  "postinstall": {
+    "habits-frontend": "npm run build"
   },
   "description": "An Ionic project"
 }

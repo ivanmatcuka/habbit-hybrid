@@ -1,5 +1,5 @@
+import { userStoreDefinition } from 'habits-frontend/store';
 import { defineStore } from 'pinia';
-import { userStoreDefinition } from '~shared/stores/user';
 
 const useUserStore = defineStore('user', userStoreDefinition);
 

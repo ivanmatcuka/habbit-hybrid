@@ -87,7 +87,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/vue';
-import WebAddHabitPage from '~shared/pages/Add.vue';
+import { AddPage } from 'habits-frontend/pages';
 
 import AuthLayout from '@/AuthLayout.vue';
 
@@ -105,6 +105,6 @@ export default {
     IonTitle,
     IonToolbar,
   },
-  extends: WebAddHabitPage,
+  extends: AddPage,
 };
 </script>

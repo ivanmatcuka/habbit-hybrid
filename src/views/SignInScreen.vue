@@ -70,8 +70,8 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/vue';
-import HInput from '~shared/components/HInput.vue';
-import WebSignIn from '~shared/pages/SignIn.vue';
+import { HInput } from 'habits-frontend/components';
+import { SignInPage } from 'habits-frontend/pages';
 
 import UnauthLayout from '@/UnauthLayout.vue';
 
@@ -87,6 +87,6 @@ export default {
     IonToolbar,
     UnauthLayout,
   },
-  extends: WebSignIn,
+  extends: SignInPage,
 };
 </script>

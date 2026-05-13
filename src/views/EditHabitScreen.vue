@@ -84,8 +84,8 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/vue';
-import PagePlaceholder from '~shared/components/PagePlaceholder.vue';
-import WebEditHabitPage from '~shared/pages/Edit.vue';
+import { PagePlaceholder } from 'habits-frontend/components';
+import { EditPage } from 'habits-frontend/pages';
 
 import AuthLayout from '@/AuthLayout.vue';
 
@@ -102,6 +102,6 @@ export default {
     IonToolbar,
     PagePlaceholder,
   },
-  extends: WebEditHabitPage,
+  extends: EditPage,
 };
 </script>

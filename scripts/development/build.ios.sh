@@ -6,13 +6,17 @@ git clone https://github.com/ivanmatcuka/habbit-frontend.git ../habbit-frontend
 cd ../habbit-frontend
 npm i
 
-cd ${pwd}
+cd "${pwd}"
 
 npm install
 npm run build:development
+
+# Xcode
+xcode-select --install
+
 npx cap sync ios
 npm run ios:debug
 
-# mkdir -p ./artifacts
-# cp ./android/app/build/outputs/apk/debug/*.apk ./artifacts/
+mkdir -p ./artifacts
+cp ./ios/App/*.ipa ./artifacts/
 

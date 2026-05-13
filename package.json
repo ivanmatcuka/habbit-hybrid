@@ -15,7 +15,7 @@
     "build:development": "vue-tsc && vite build --mode development",
     "host:development": "vite dev --host --port 4174",
     "android:debug": "cd android && ./gradlew assembleDebug && cd ..",
-    "ios:debug": "cd ios/App && xcodebuild build-for-testing -workspace App.xcworkspace -scheme App -destination generic/platform=iOS && cd ../.."
+    "ios:debug": "cd ios/App && fastlane development && xcodebuild build-for-testing -workspace App.xcworkspace -scheme App -destination generic/platform=iOS && cd ../.."
   },
   "dependencies": {
     "@capacitor/android": "^5.7.8",

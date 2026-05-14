@@ -26,7 +26,7 @@ pipeline {
                 echo 'Deploying...'
                 sh '''
                     chmod +x ./scripts/development/deploy.sh
-                    ssh ${DEPLOY_USER}@${DEPLOY_HOST} 'bash -s' < ./scripts/development/deploy.sh
+                    ssh ${DEPLOY_USER}@${DEPLOY_HOST} "PROJECT_NAME=${PROJECT_NAME} bash -s" < ./scripts/development/deploy.sh
                 '''
             }
         }
@@ -39,7 +39,7 @@ pipeline {
             agent {
                 dockerfile {
                     filename './docker/development/Dockerfile.android'
-                    args '-v ${WORKSPACE}/artifacts:/artifacts  -e VITE_API_URL=${VITE_API_URL}'
+                    args '-v ${WORKSPACE}/artifacts:/artifacts  -e VITE_API_URL=${VITE_API_URL} -e LIB_PROJECT_NAME=${LIB_PROJECT_NAME} -e LIB_GIT_SOURCE=${LIB_GIT_SOURCE}'
                 }
             }
             steps {

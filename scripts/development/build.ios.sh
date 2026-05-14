@@ -9,6 +9,7 @@ npm i
 cd "${pwd}"
 
 npm install
+npm i github:ivanmatcuka/habits-frontend#development
 npm run build:development
 
 # Xcode

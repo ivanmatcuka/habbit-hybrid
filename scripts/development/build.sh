@@ -1,15 +1,3 @@
-pwd=$(pwd)
-
-# Plug in the web repository
-if [! -d "$LIB_PROJECT_NAME" ];then
-	git clone ${LIB_GIT_SOURCE} ../${LIB_PROJECT_NAME}
-fi
-
-cd ../${LIB_PROJECT_NAME}
-npm i
-
-cd ${pwd}
-
 # Generate debug key
 keytool -genkey -v \
   -keystore debug.keystore \
@@ -23,6 +11,7 @@ keytool -genkey -v \
 
 
 npm install
+npm i github:ivanmatcuka/habits-frontend#development
 npm run build:development
 npx cap sync android
 npm run android:debug

@@ -75,6 +75,7 @@
 </template>
 
 <script lang="ts">
+import { IonRefresherCustomEvent, RefresherEventDetail } from '@ionic/core';
 import {
   IonBackButton,
   IonButton,
@@ -88,10 +89,11 @@ import {
   IonToolbar,
 } from '@ionic/vue';
 import { AddPage } from 'habits-frontend/pages';
+import { defineComponent } from 'vue';
 
 import AuthLayout from '@/AuthLayout.vue';
 
-export default {
+export default defineComponent({
   components: {
     AuthLayout,
     IonBackButton,
@@ -106,5 +108,10 @@ export default {
     IonToolbar,
   },
   extends: AddPage,
-};
+  methods: {
+    handleRefresh(event: IonRefresherCustomEvent<RefresherEventDetail>) {
+      console.log(event);
+    },
+  },
+});
 </script>

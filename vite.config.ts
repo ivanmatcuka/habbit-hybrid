@@ -1,6 +1,5 @@
 /// <reference types="vitest" />
 
-import legacy from '@vitejs/plugin-legacy';
 import vue from '@vitejs/plugin-vue';
 import * as BootstrapVueNext from 'bootstrap-vue-next';
 import path from 'path';
@@ -17,14 +16,12 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler',
         silenceDeprecations: ['if-function', 'color-functions', 'global-builtin', 'import'],
       },
     },
   },
   plugins: [
     vue(),
-    legacy(),
     Components({
       dts: true,
       resolvers: [BootstrapVueNext.Resolvers.BootstrapVueNextResolver(), IconsResolve()],
@@ -39,8 +36,8 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  test: {
-    environment: 'jsdom',
-    globals: true,
-  },
+  // test: {
+  //   environment: 'jsdom',
+  //   globals: true,
+  // },
 });

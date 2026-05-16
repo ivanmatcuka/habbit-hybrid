@@ -56,10 +56,10 @@ import {
   IonToolbar,
   RefresherCustomEvent,
 } from '@ionic/vue';
-import { HabitItemPlaceholder } from 'habits-frontend/components';
-import { HabitItem } from 'habits-frontend/components';
-import { HabitsPage } from 'habits-frontend/pages';
-import { tasksService } from 'habits-frontend/services';
+import { HabitItemPlaceholder } from 'habits-frontend';
+import { HabitItem } from 'habits-frontend';
+import { HabitsPage } from 'habits-frontend';
+import { tasksService } from 'habits-frontend';
 import { ComponentOptions, defineComponent } from 'vue';
 
 import AuthLayout from '@/AuthLayout.vue';

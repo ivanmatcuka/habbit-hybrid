@@ -1,6 +1,6 @@
 import { IonicVue } from '@ionic/vue';
 import { createBootstrap } from 'bootstrap-vue-next';
-// import { localStorageService, userService } from 'habits-frontend/services';
+import { localStorageService, userService } from 'habits-frontend';
 import '@ionic/vue/css/palettes/dark.always.css';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -25,25 +25,25 @@ import { createApp } from 'vue';
 
 import App from './App.vue';
 import router from './router';
-// import { useUserStore } from './stores/user';
+import { useUserStore } from './stores/user';
 
 const pinia = createPinia();
 const app = createApp(App).use(IonicVue).use(createBootstrap()).use(pinia).use(router);
 
-// if (localStorageService.getAccessToken()) {
-//   const userStore = useUserStore();
+if (localStorageService.getAccessToken()) {
+  const userStore = useUserStore();
 
-//   userService.getUser().then(({ data, error }) => {
-//     const accessToken = localStorageService.getAccessToken();
+  userService.getUser().then(({ data, error }) => {
+    const accessToken = localStorageService.getAccessToken();
 
-//     if (error) {
-//       console.error('Failed to fetch user:', error);
-//     } else if (data && accessToken) {
-//       userStore?.setUser(data, accessToken);
-//       router.push({ name: 'home' });
-//     }
-//   });
-// }
+    if (error) {
+      console.error('Failed to fetch user:', error);
+    } else if (data && accessToken) {
+      userStore?.setUser(data, accessToken);
+      router.push({ name: 'home' });
+    }
+  });
+}
 
 router.isReady().then(() => {
   app.mount('#app');

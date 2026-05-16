@@ -9,8 +9,8 @@
   </ion-footer>
 </template>
 
-<!-- <style lang="scss">
-@use '~shared/assets/scss/variables.scss' as *;
+<style lang="scss">
+@use '../node_modules/habits-frontend/src/assets/scss/variables.scss' as *;
 
 ion-content {
   --padding-top: #{$spacer * 4};
@@ -23,7 +23,7 @@ ion-content::part(scroll) {
   margin-right: var(--ion-safe-area-right, 0);
   margin-left: var(--ion-safe-area-left, 0);
 }
-</style> -->
+</style>
 
 <script lang="ts">
 import { IonContent, IonFooter, IonToolbar } from '@ionic/vue';

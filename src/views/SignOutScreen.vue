@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { SignOutPage } from 'habits-frontend/pages';
+import { SignOutPage } from 'habits-frontend';
 
 export default {
   components: { IonHeader, IonPage, IonTitle, IonToolbar },

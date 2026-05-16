@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { IonButton, IonButtons, IonIcon, IonTitle } from '@ionic/vue';
-import { DatePicker as WebDatePicker } from 'habits-frontend/components';
+import { DatePicker as WebDatePicker } from 'habits-frontend';
 import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 

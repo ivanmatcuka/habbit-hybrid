@@ -84,8 +84,8 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/vue';
-import { PagePlaceholder } from 'habits-frontend/components';
-import { EditPage } from 'habits-frontend/pages';
+import { PagePlaceholder } from 'habits-frontend';
+import { EditPage } from 'habits-frontend';
 
 import AuthLayout from '@/AuthLayout.vue';
 

@@ -43,8 +43,8 @@
 
 <script lang="ts">
 import { IonButton, IonHeader, IonLabel, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { HInput } from 'habits-frontend/components';
-import { RecoverPasswordPage } from 'habits-frontend/pages';
+import { HInput } from 'habits-frontend';
+import { RecoverPasswordPage } from 'habits-frontend';
 
 import UnauthLayout from '@/UnauthLayout.vue';
 

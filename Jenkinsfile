@@ -8,20 +8,22 @@ pipeline {
     environment {
         DEPLOY_USER = credentials('deploy-user')
         DEPLOY_HOST = credentials('deploy-host')
+
+        LIB_PROJECT_NAME = 'habits-frontend'
+        PROJECT_NAME = 'habits-hybrid'
+        VITE_API_URL = 'http://192.168.2.128:8000'
+        LIB_GIT_SOURCE = 'https://github.com/ivanmatcuka/habits-frontend.git'
     }
 
     stages {
-        stage('Lint') {
+        stage('lint') {
             steps {
                 echo 'Linting....'
                 sh 'npm i'
                 sh 'npm run lint'
             }
         }
-        stage('Deploy') {
-            environment {
-                PROJECT_NAME = 'habits-hybrid'
-            }
+        stage('deploy') {
             steps {
                 echo 'Deploying...'
                 sh '''
@@ -30,12 +32,7 @@ pipeline {
                 '''
             }
         }
-        stage('Build') {
-            environment {
-                VITE_API_URL = 'http://192.168.2.128:8000'
-                LIB_PROJECT_NAME = 'habits-frontend'
-                LIB_GIT_SOURCE = 'https://github.com/ivanmatcuka/habits-frontend.git'
-            }
+        stage('build-android') {
             agent {
                 dockerfile {
                     filename './docker/development/Dockerfile.android'
@@ -43,11 +40,22 @@ pipeline {
                 }
             }
             steps {
-                echo 'Building...'
+                echo 'Building for Android...'
 
                 sh '''
-                    chmod +x ./scripts/development/build.sh
-                    ./scripts/development/build.sh
+                    chmod +x ./scripts/development/build.android.sh
+                    ./scripts/development/build.android.sh
+                '''
+                archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
+            }
+        }
+        stage('build-ios') {
+            steps {
+                echo 'Building for iOS...'
+
+                sh '''
+                    chmod +x ./scripts/development/build.ios.sh
+                    ssh ${DEPLOY_USER}@${DEPLOY_HOST} "PROJECT_NAME=${PROJECT_NAME} bash -s" < ./scripts/development/build.ios.sh
                 '''
                 archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
             }

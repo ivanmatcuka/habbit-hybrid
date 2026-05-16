@@ -77,9 +77,9 @@ import {
   IonToolbar,
   RefresherCustomEvent,
 } from '@ionic/vue';
-import { TodoItem } from 'habits-frontend/components';
-import { TodoItemPlaceholder } from 'habits-frontend/components';
-import { HomePage } from 'habits-frontend/pages';
+import { TodoItem } from 'habits-frontend';
+import { TodoItemPlaceholder } from 'habits-frontend';
+import { HomePage } from 'habits-frontend';
 import { ComponentOptions, defineComponent } from 'vue';
 
 import AuthLayout from '@/AuthLayout.vue';

@@ -11,11 +11,13 @@ keytool -genkey -v \
 
 
 npm install
-npm i github:ivanmatcuka/habits-frontend#development
+npm i $LIB_GIT_SOURCE#development
 npm run build:development
 npx cap sync android
 npm run android:debug
 
 mkdir -p ./artifacts
 cp ./android/app/build/outputs/apk/debug/*.apk ./artifacts/
+
+# RUNS INSIDE DOCKER CONTAINER ON JENKINS SERVER
 

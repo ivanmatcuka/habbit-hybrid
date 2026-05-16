@@ -1,7 +1,5 @@
-/// <reference types="vitest" />
-
 import vue from '@vitejs/plugin-vue';
-import * as BootstrapVueNext from 'bootstrap-vue-next';
+import { BootstrapVueNextResolver } from 'bootstrap-vue-next/resolvers';
 import path from 'path';
 import IconsResolve from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
@@ -24,7 +22,7 @@ export default defineConfig({
     vue(),
     Components({
       dts: true,
-      resolvers: [BootstrapVueNext.Resolvers.BootstrapVueNextResolver(), IconsResolve()],
+      resolvers: [BootstrapVueNextResolver(), IconsResolve()],
     }),
     Icons({
       autoInstall: true,

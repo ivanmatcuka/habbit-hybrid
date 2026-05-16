@@ -76,8 +76,8 @@
 
 <script lang="ts">
 import { IonButton, IonHeader, IonLabel, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { HInput } from 'habits-frontend/components';
-import { SignUpPage } from 'habits-frontend/pages';
+import { HInput } from 'habits-frontend';
+import { SignUpPage } from 'habits-frontend';
 
 import UnauthLayout from '@/UnauthLayout.vue';
 

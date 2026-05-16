@@ -70,8 +70,8 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/vue';
-import { HInput } from 'habits-frontend/components';
-import { SignInPage } from 'habits-frontend/pages';
+import { HInput } from 'habits-frontend';
+import { SignInPage } from 'habits-frontend';
 
 import UnauthLayout from '@/UnauthLayout.vue';
 

@@ -4,8 +4,8 @@
   </ion-content>
 </template>
 
-<!-- <style lang="scss">
-@use '~shared/assets/scss/variables.scss' as *;
+<style lang="scss">
+@use '../node_modules/habits-frontend/src/assets/scss/variables.scss' as *;
 
 ion-content {
   --padding-top: #{$spacer * 4};
@@ -13,7 +13,7 @@ ion-content {
   --padding-end: #{$spacer * 2};
   --padding-bottom: #{$spacer * 4};
 }
-</style> -->
+</style>
 
 <script lang="ts">
 import { IonContent } from '@ionic/vue';

@@ -1,15 +1,11 @@
-pwd=$(pwd)
+cd ${PROJECT_NAME}
 
-# Plug in the web repository
-rm -rf ../habbit-frontend
-git clone https://github.com/ivanmatcuka/habbit-frontend.git ../habbit-frontend
-cd ../habbit-frontend
-npm i
-
-cd "${pwd}"
+git reset --hard
+git checkout development
+git pull
 
 npm install
-npm i github:ivanmatcuka/habits-frontend#development
+npm i "${LIB_GIT_SOURCE}#development#development"
 npm run build:development
 
 # Xcode
@@ -21,3 +17,4 @@ npm run ios:debug
 mkdir -p ./artifacts
 cp ./ios/App/*.ipa ./artifacts/
 
+# RUNS ON THE REAL SERVER (MacBook builder)

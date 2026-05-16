@@ -9,7 +9,7 @@ COPY ./package*.json ./
 COPY . ./
 
 RUN npm install
-RUN npm i ${LIB_GIT_SOURCE}#development
+RUN npm i $LIB_GIT_SOURCE#development
 RUN npm run build:development
 RUN npx cap sync web
 

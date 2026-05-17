@@ -13,6 +13,12 @@ keytool -genkey -v \
 npm install
 npm i $LIB_GIT_SOURCE#development
 npm run build:development
+
+# temp
+cd "node_modoles/${LIB_PROJECT_NAME}"
+npm run prepare
+cd ../..
+
 npx cap sync android
 npm run android:debug
 

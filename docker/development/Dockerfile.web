@@ -13,7 +13,7 @@ RUN npm install
 RUN npm i $LIB_GIT_SOURCE#development
 
 # temp
-WORKDIR /usr/src/app/node_modoles/$LIB_PROJECT_NAME
+WORKDIR /usr/src/app/node_modules/$LIB_PROJECT_NAME
 RUN npm run prepare
 WORKDIR /usr/src/app/$PROJECT_NAME
 

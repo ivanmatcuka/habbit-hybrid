@@ -6,6 +6,12 @@ git pull
 
 npm install
 npm i "${LIB_GIT_SOURCE}#development#development"
+
+# temp
+cd "node_modoles/${LIB_PROJECT_NAME}"
+npm run prepare
+cd ../..
+
 npm run build:development
 
 # Xcode

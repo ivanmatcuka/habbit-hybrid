@@ -30,7 +30,6 @@ pipeline {
             steps {
                 echo 'Deploying...'
                 sh '''
-                    chmod +x ./scripts/development/deploy.sh
                     ssh ${DEPLOY_USER}@${DEPLOY_HOST} "PROJECT_NAME=${PROJECT_NAME} bash -s" < ./scripts/development/deploy.sh
                 '''
             }
@@ -57,9 +56,9 @@ pipeline {
                 echo 'Building for iOS...'
 
                 sh '''
-                    chmod +x ./scripts/development/build.ios.sh
-                    ssh ${BUILD_USER}@${BUILD_HOST} "PROJECT_NAME=${PROJECT_NAME} bash -s" < ./scripts/development/build.ios.sh
+                    ${BUILD_USER}@${BUILD_HOST} 'cd ~/Documents && ./${PROJECT_NAME}/scripts/development/build.ios.sh
                 '''
+
                 archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
             }
         }

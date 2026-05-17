@@ -1,5 +1,3 @@
-cd ${PROJECT_NAME}
-
 git reset --hard
 git checkout development
 git pull

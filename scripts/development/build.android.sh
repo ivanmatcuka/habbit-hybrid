@@ -15,7 +15,7 @@ npm i $LIB_GIT_SOURCE#development
 npm run build:development
 
 # temp
-cd "node_modoles/${LIB_PROJECT_NAME}"
+cd "node_modules/${LIB_PROJECT_NAME}"
 npm run prepare
 cd ../..
 

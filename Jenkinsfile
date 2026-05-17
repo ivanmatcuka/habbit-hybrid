@@ -9,6 +9,9 @@ pipeline {
         DEPLOY_USER = credentials('deploy-user')
         DEPLOY_HOST = credentials('deploy-host')
 
+        BUILD_USER = credentials('build-user')
+        BUILD_HOST = credentials('build-host')
+
         LIB_PROJECT_NAME = 'habits-frontend'
         PROJECT_NAME = 'habits-hybrid'
         VITE_API_URL = 'http://192.168.2.128:8000'
@@ -55,7 +58,7 @@ pipeline {
 
                 sh '''
                     chmod +x ./scripts/development/build.ios.sh
-                    ssh ${DEPLOY_USER}@${DEPLOY_HOST} "PROJECT_NAME=${PROJECT_NAME} bash -s" < ./scripts/development/build.ios.sh
+                    ssh ${BUILD_USER}@${BUILD_HOST} "PROJECT_NAME=${PROJECT_NAME} bash -s" < ./scripts/development/build.ios.sh
                 '''
                 archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
             }

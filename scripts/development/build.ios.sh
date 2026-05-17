@@ -8,7 +8,7 @@ npm install
 npm i "${LIB_GIT_SOURCE}#development#development"
 
 # temp
-cd "node_modoles/${LIB_PROJECT_NAME}"
+cd "node_modules/${LIB_PROJECT_NAME}"
 npm run prepare
 cd ../..
 

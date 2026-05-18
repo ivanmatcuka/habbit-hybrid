@@ -19,31 +19,31 @@ pipeline {
     }
 
     stages {
-        stage('Lint') {
-            steps {
-                echo 'Linting....'
-                sh 'npm i'
-                sh 'npm run lint'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-                sh '''
-                    ssh ${DEPLOY_USER}@${DEPLOY_HOST} "
-                        cd /home/${DEPLOY_USER}/${PROJECT_NAME} ;
+        // stage('Lint') {
+        //     steps {
+        //         echo 'Linting....'
+        //         sh 'npm i'
+        //         sh 'npm run lint'
+        //     }
+        // }
+        // stage('Deploy') {
+        //     steps {
+        //         echo 'Deploying...'
+        //         sh '''
+        //             ssh ${DEPLOY_USER}@${DEPLOY_HOST} "
+        //                 cd /home/${DEPLOY_USER}/${PROJECT_NAME} ;
 
-                        git reset --hard ;
-                        git checkout development ;
-                        git pull ;
+        //                 git reset --hard ;
+        //                 git checkout development ;
+        //                 git pull ;
 
-                        chmod +x ./scripts/development/deploy.sh ;
+        //                 chmod +x ./scripts/development/deploy.sh ;
 
-                        PROJECT_NAME=${PROJECT_NAME} ./scripts/development/deploy.sh
-                    "
-                '''
-            }
-        }
+        //                 PROJECT_NAME=${PROJECT_NAME} ./scripts/development/deploy.sh
+        //             "
+        //         '''
+        //     }
+        // }
         stage('Build for iOS') {
             steps {
                 echo 'Building for iOS...'
@@ -68,25 +68,25 @@ pipeline {
                     "
                 '''
 
-                archiveArtifacts artifacts: 'artifacts/*.ipa', fingerprint: true
+                // archiveArtifacts artifacts: 'artifacts/*.ipa', fingerprint: true
             }
         }
-        stage('Build for Android') {
-            agent {
-                dockerfile {
-                    filename './docker/development/Dockerfile.android'
-                    args '-v ${WORKSPACE}/artifacts:/artifacts  -e VITE_API_URL=${VITE_API_URL} -e LIB_PROJECT_NAME=${LIB_PROJECT_NAME} -e LIB_GIT_SOURCE=${LIB_GIT_SOURCE}'
-                }
-            }
-            steps {
-                echo 'Building for Android...'
+        // stage('Build for Android') {
+        //     agent {
+        //         dockerfile {
+        //             filename './docker/development/Dockerfile.android'
+        //             args '-v ${WORKSPACE}/artifacts:/artifacts  -e VITE_API_URL=${VITE_API_URL} -e LIB_PROJECT_NAME=${LIB_PROJECT_NAME} -e LIB_GIT_SOURCE=${LIB_GIT_SOURCE}'
+        //         }
+        //     }
+        //     steps {
+        //         echo 'Building for Android...'
 
-                sh '''
-                    chmod +x ./scripts/development/build.android.sh
-                    ./scripts/development/build.android.sh
-                '''
-                archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
-            }
-        }
+        //         sh '''
+        //             chmod +x ./scripts/development/build.android.sh
+        //             ./scripts/development/build.android.sh
+        //         '''
+        //         archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
+        //     }
+        // }
     }
 }

@@ -58,7 +58,7 @@ pipeline {
                 echo 'Building for iOS...'
 
                 sh '''
-                    ssh ${BUILD_USER}@${BUILD_HOST} '
+                    ssh ${BUILD_USER}@${BUILD_HOST} "
                         export SHELL=/bin/zsh
                         source ~/.zshrc
 
@@ -68,7 +68,7 @@ pipeline {
                         LIB_PROJECT_NAME=${LIB_PROJECT_NAME} \
                         LIB_GIT_SOURCE=${LIB_GIT_SOURCE} \
                         ./scripts/development/build.ios.sh
-                '
+                    "
                 '''
 
                 archiveArtifacts artifacts: 'artifacts/*.ipa', fingerprint: true

@@ -25,7 +25,7 @@ set -euo pipefail
 
 LIB_DIR="../${LIB_PROJECT_NAME}"
 
-nvm use
+# nvm use
 
 # Build UI library
 rm -rf "${LIB_DIR}"

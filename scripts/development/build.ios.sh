@@ -21,18 +21,18 @@
 # - runs iOS build
 # ==============================================================================
 
-# Install dependencies
+set -euo pipefail
+
+LIB_DIR="../${LIB_PROJECT_NAME}"
+
+# Build UI library
+git clone "${LIB_GIT_SOURCE}" "${LIB_DIR}"
+npm i --prefix "${LIB_DIR}"
+npm run build:library --prefix "${LIB_DIR}"
+
+# Build app
 npm install
-
-# Temporary UI plug-in
-git clone ${LIB_GIT_SOURCE} ../${LIB_PROJECT_NAME}
-cd ../${LIB_PROJECT_NAME}
-npm i
-npm run build:library
-cd ../${PROJECT_NAME}
-npm i ../${LIB_PROJECT_NAME}
-
-# Build
+npm i "${LIB_DIR}"
 npm run build:development
 npx cap sync ios
 npm run ios:debug

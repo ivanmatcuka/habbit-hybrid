@@ -26,7 +26,7 @@
 #   - pulls latest git state
 # ==============================================================================
 
-set -e
+set -euo pipefail
 
 # Rebuild and restart Docker
 docker compose -f compose.development.yml down

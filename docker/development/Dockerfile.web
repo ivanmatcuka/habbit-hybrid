@@ -4,21 +4,19 @@ ARG LIB_GIT_SOURCE
 ARG LIB_PROJECT_NAME
 ARG PROJECT_NAME
 
+# Build UI library
+RUN git clone $LIB_GIT_SOURCE /usr/src/app/$LIB_PROJECT_NAME \
+  && cd /usr/src/app/$LIB_PROJECT_NAME \
+  && git checkout development \
+  && npm i \
+  && npm run build:library
+
+# Build app
 WORKDIR /usr/src/app/$PROJECT_NAME
-
-COPY ./package*.json ./
-COPY . ./
-
-# temp
-RUN git clone $LIB_GIT_SOURCE /usr/src/app/$LIB_PROJECT_NAME
-WORKDIR /usr/src/app/$LIB_PROJECT_NAME
-RUN npm i
-RUN npm run build:library
-WORKDIR /usr/src/app/$PROJECT_NAME
-RUN npm i /usr/src/app/$LIB_PROJECT_NAME
-
-RUN npm run build:development
-RUN npx cap sync web
+COPY . .
+RUN npm i /usr/src/app/$LIB_PROJECT_NAME \
+  && npm run build:development \
+  && npx cap sync web
 
 EXPOSE 4174
-CMD [ "npm", "run", "host:development" ]
+CMD ["npm", "run", "host:development"]

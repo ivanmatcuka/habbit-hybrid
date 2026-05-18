@@ -26,10 +26,11 @@
 #   - builds Android project
 # ==============================================================================
 
-set -e
+set -euo pipefail
 
+LIB_DIR="../${LIB_PROJECT_NAME}"
 
-# Generate debug key
+# Generate debug keystore
 rm -f debug.keystore
 keytool -genkey -v \
   -keystore debug.keystore \
@@ -41,15 +42,14 @@ keytool -genkey -v \
   -validity 10000 \
   -dname "C=US, O=Android, CN=Android Debug"
 
-# Temporary UI plug-in
-git clone ${LIB_GIT_SOURCE} ../${LIB_PROJECT_NAME}
-cd ../${LIB_PROJECT_NAME}
-npm i
-npm run build:library
-cd ../${PROJECT_NAME}
-npm i ../${LIB_PROJECT_NAME}
+# Build UI library
+git clone "${LIB_GIT_SOURCE}" "${LIB_DIR}"
+npm i --prefix "${LIB_DIR}"
+npm run build:library --prefix "${LIB_DIR}"
 
-# Build
+# Build app
+npm install
+npm i "${LIB_DIR}"
 npm run build:development
 npx cap sync android
 npm run android:debug

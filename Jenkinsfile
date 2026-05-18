@@ -19,14 +19,14 @@ pipeline {
     }
 
     stages {
-        stage('lint') {
+        stage('Lint') {
             steps {
                 echo 'Linting....'
                 sh 'npm i'
                 sh 'npm run lint'
             }
         }
-        stage('deploy') {
+        stage('Deploy') {
             steps {
                 echo 'Deploying...'
                 sh '''
@@ -44,7 +44,7 @@ pipeline {
                 '''
             }
         }
-        stage('build-ios') {
+        stage('Build for iOS') {
             steps {
                 echo 'Building for iOS...'
 
@@ -71,7 +71,7 @@ pipeline {
                 archiveArtifacts artifacts: 'artifacts/*.ipa', fingerprint: true
             }
         }
-        stage('build-android') {
+        stage('Build for Android') {
             agent {
                 dockerfile {
                     filename './docker/development/Dockerfile.android'

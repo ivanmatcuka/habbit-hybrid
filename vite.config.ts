@@ -17,6 +17,7 @@ export default defineConfig({
         silenceDeprecations: ['if-function', 'color-functions', 'global-builtin', 'import'],
       },
     },
+    transformer: 'postcss',
   },
   plugins: [
     vue(),

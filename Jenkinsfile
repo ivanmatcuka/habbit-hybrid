@@ -49,6 +49,7 @@ pipeline {
                 echo 'Building for Android...'
 
                 sh '''
+                    chmod +x ./scripts/development/build.android.sh ;
                     ./scripts/development/build.android.sh
                 '''
                 archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
@@ -64,6 +65,8 @@ pipeline {
                         source ~/.zshrc
 
                         cd ~/Documents/${PROJECT_NAME}
+
+                        chmod +x ./scripts/development/build.ios.sh ;
 
                         PROJECT_NAME=${PROJECT_NAME} \
                         LIB_PROJECT_NAME=${LIB_PROJECT_NAME} \

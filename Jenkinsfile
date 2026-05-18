@@ -44,23 +44,6 @@ pipeline {
                 '''
             }
         }
-        stage('build-android') {
-            agent {
-                dockerfile {
-                    filename './docker/development/Dockerfile.android'
-                    args '-v ${WORKSPACE}/artifacts:/artifacts  -e VITE_API_URL=${VITE_API_URL} -e LIB_PROJECT_NAME=${LIB_PROJECT_NAME} -e LIB_GIT_SOURCE=${LIB_GIT_SOURCE}'
-                }
-            }
-            steps {
-                echo 'Building for Android...'
-
-                sh '''
-                    chmod +x ./scripts/development/build.android.sh
-                    ./scripts/development/build.android.sh
-                '''
-                archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
-            }
-        }
         stage('build-ios') {
             steps {
                 echo 'Building for iOS...'
@@ -86,6 +69,23 @@ pipeline {
                 '''
 
                 archiveArtifacts artifacts: 'artifacts/*.ipa', fingerprint: true
+            }
+        }
+        stage('build-android') {
+            agent {
+                dockerfile {
+                    filename './docker/development/Dockerfile.android'
+                    args '-v ${WORKSPACE}/artifacts:/artifacts  -e VITE_API_URL=${VITE_API_URL} -e LIB_PROJECT_NAME=${LIB_PROJECT_NAME} -e LIB_GIT_SOURCE=${LIB_GIT_SOURCE}'
+                }
+            }
+            steps {
+                echo 'Building for Android...'
+
+                sh '''
+                    chmod +x ./scripts/development/build.android.sh
+                    ./scripts/development/build.android.sh
+                '''
+                archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
             }
         }
     }

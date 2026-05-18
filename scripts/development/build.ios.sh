@@ -29,7 +29,6 @@ LIB_DIR="../${LIB_PROJECT_NAME}"
 rm -rf "${LIB_DIR}"
 git clone -b development "${LIB_GIT_SOURCE}" "${LIB_DIR}"
 
-nvm use
 npm install
 npm install  --prefix "${LIB_DIR}" # Temp
 npm run build:library --prefix "${LIB_DIR}" # Temp

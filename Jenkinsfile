@@ -32,7 +32,13 @@ pipeline {
                 sh '''
                     ssh ${DEPLOY_USER}@${DEPLOY_HOST} "
                         cd /home/${DEPLOY_USER}/${PROJECT_NAME} ;
+
+                        git reset --hard ;
+                        git checkout development ;
+                        git pull ;
+
                         chmod +x ./scripts/development/deploy.sh ;
+
                         PROJECT_NAME=${PROJECT_NAME} ./scripts/development/deploy.sh
                     "
                 '''
@@ -49,7 +55,7 @@ pipeline {
                 echo 'Building for Android...'
 
                 sh '''
-                    chmod +x ./scripts/development/build.android.sh ;
+                    chmod +x ./scripts/development/build.android.sh
                     ./scripts/development/build.android.sh
                 '''
                 archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
@@ -61,10 +67,14 @@ pipeline {
 
                 sh '''
                     ssh ${BUILD_USER}@${BUILD_HOST} "
-                        export SHELL=/bin/zsh
-                        source ~/.zshrc
+                        export SHELL=/bin/zsh ;
+                        source ~/.zshrc ;
 
-                        cd ~/Documents/${PROJECT_NAME}
+                        cd ~/Documents/${PROJECT_NAME} ;
+
+                        git reset --hard ;
+                        git checkout development ;
+                        git pull ;
 
                         chmod +x ./scripts/development/build.ios.sh ;
 

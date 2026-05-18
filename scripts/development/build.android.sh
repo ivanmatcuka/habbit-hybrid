@@ -46,7 +46,7 @@ npm install
 npm i $LIB_GIT_SOURCE#development
 npm run build:development
 cd "node_modules/${LIB_PROJECT_NAME}"
-npm run prepare
+npm run prepublish
 cd ../..
 
 # Build

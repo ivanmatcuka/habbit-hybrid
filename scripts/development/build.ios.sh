@@ -21,18 +21,13 @@
 # - runs iOS build
 # ==============================================================================
 
-# Reset git
-git reset --hard
-git checkout development
-git pull
-
 # Install dependencies
 npm install
 
 # Temporary UI plug-in
 npm i "${LIB_GIT_SOURCE}#development"
 cd "node_modules/${LIB_PROJECT_NAME}"
-npm run prepare
+npm run prepublish
 cd ../..
 
 # Build

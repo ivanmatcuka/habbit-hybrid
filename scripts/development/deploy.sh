@@ -28,11 +28,6 @@
 
 set -e
 
-# Reset git
-git reset --hard
-git checkout development
-git pull
-
 # Rebuild and restart Docker
 docker compose -f compose.development.yml down
 docker compose -f compose.development.yml up -d --build

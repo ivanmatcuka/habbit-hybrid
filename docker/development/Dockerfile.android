@@ -27,7 +27,7 @@ RUN wget https://dl.google.com/android/repository/commandlinetools-linux-1107670
 ENV PATH=$PATH:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin
 ENV PATH=$PATH:${ANDROID_SDK_ROOT}/platform-tools
 
-# ?
+# Accept license
 RUN yes | sdkmanager --licenses
 RUN sdkmanager \
   "platform-tools" \

@@ -43,7 +43,7 @@ keytool -genkey -v \
   -dname "C=US, O=Android, CN=Android Debug"
 
 # Build UI library
-git clone "${LIB_GIT_SOURCE}" "${LIB_DIR}"
+git clone -b development "${LIB_GIT_SOURCE}" "${LIB_DIR}"
 npm i --prefix "${LIB_DIR}"
 npm run build:library --prefix "${LIB_DIR}"
 

@@ -26,9 +26,8 @@ set -euo pipefail
 LIB_DIR="../${LIB_PROJECT_NAME}"
 
 # Build UI library
-if [ ! -d "${LIB_DIR}" ] ; then
-  git clone "${LIB_GIT_SOURCE}" "${LIB_DIR}"
-fi
+rm -rf "${LIB_GIT_SOURCE}"
+git clone -b development "${LIB_GIT_SOURCE}" "${LIB_DIR}"
 npm i --prefix "${LIB_DIR}"
 npm run build:library --prefix "${LIB_DIR}"
 

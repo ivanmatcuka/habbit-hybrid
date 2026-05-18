@@ -31,7 +31,8 @@ pipeline {
                 echo 'Deploying...'
                 sh '''
                     ssh ${DEPLOY_USER}@${DEPLOY_HOST} "
-                        cd ~/${PROJECT_NAME}
+                        cd /home/${DEPLOY_USER}/${PROJECT_NAME} ;
+                        chmod +x ./scripts/development/deploy.sh
                         PROJECT_NAME=${PROJECT_NAME} ./scripts/development/deploy.sh
                     "
                 '''

@@ -25,6 +25,8 @@ set -euo pipefail
 
 LIB_DIR="../${LIB_PROJECT_NAME}"
 
+nvm use
+
 # Build UI library
 rm -rf "${LIB_DIR}"
 git clone -b development "${LIB_GIT_SOURCE}" "${LIB_DIR}"

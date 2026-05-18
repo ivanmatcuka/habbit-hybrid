@@ -25,10 +25,12 @@
 npm install
 
 # Temporary UI plug-in
-npm i "${LIB_GIT_SOURCE}#development"
-cd "node_modules/${LIB_PROJECT_NAME}"
-npm run prepublish
-cd ../..
+git clone ${LIB_GIT_SOURCE} ../${LIB_PROJECT_NAME}
+cd ../${LIB_PROJECT_NAME}
+npm i
+npm run build:library
+cd ../${PROJECT_NAME}
+npm i ../${LIB_PROJECT_NAME}
 
 # Build
 npm run build:development

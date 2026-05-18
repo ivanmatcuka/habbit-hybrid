@@ -3,7 +3,7 @@ git checkout development
 git pull
 
 npm install
-npm i "${LIB_GIT_SOURCE}#development#development"
+npm i "${LIB_GIT_SOURCE}#development"
 
 # temp
 cd "node_modules/${LIB_PROJECT_NAME}"

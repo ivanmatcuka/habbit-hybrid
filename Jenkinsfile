@@ -51,17 +51,21 @@ pipeline {
             }
         }
         stage('build-ios') {
-            agent {
-                dockerfile {
-                    filename './docker/development/Dockerfile.ios'
-                    args '-v ${WORKSPACE}/artifacts:/artifacts  -e VITE_API_URL=${VITE_API_URL} -e LIB_PROJECT_NAME=${LIB_PROJECT_NAME} -e LIB_GIT_SOURCE=${LIB_GIT_SOURCE}'
-                }
-            }
             steps {
                 echo 'Building for iOS...'
 
                 sh '''
-                    ssh ${BUILD_USER}@${BUILD_HOST}  "PROJECT_NAME=${PROJECT_NAME} bash -s" < ./scripts/development/build.ios.sh
+                    ssh ${BUILD_USER}@${BUILD_HOST} '
+                        export SHELL=/bin/zsh
+                        source ~/.zshrc
+
+                        cd ~/Documents/${PROJECT_NAME}
+
+                        PROJECT_NAME=${PROJECT_NAME} \
+                        LIB_PROJECT_NAME=${LIB_PROJECT_NAME} \
+                        LIB_GIT_SOURCE=${LIB_GIT_SOURCE} \
+                        ./scripts/development/build.ios.sh
+                '
                 '''
 
                 archiveArtifacts artifacts: 'artifacts/*.ipa', fingerprint: true

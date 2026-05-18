@@ -32,7 +32,6 @@ npm i --prefix "${LIB_DIR}"
 npm run build:library --prefix "${LIB_DIR}"
 
 # Build app
-npm install
 npm i "${LIB_DIR}"
 npm run build:development
 npx cap sync ios

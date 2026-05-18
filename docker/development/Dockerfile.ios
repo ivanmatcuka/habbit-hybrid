@@ -1,12 +1,5 @@
 FROM node:22.13 AS build
 
-# Install dependencies
-# RUN apt update && apt upgrade -y && apt install -y \
-#   openjdk-21-jdk \
-#   wget \
-#   unzip \
-#   build-essential \
-#   git \
-#   python3
+ARG PROJECT_NAME
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/$PROJECT_NAME

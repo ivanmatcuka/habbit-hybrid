@@ -45,21 +45,26 @@ pipeline {
                 echo 'Building for Android...'
 
                 sh '''
-                    chmod +x ./scripts/development/build.android.sh
                     ./scripts/development/build.android.sh
                 '''
                 archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
             }
         }
         stage('build-ios') {
+            agent {
+                dockerfile {
+                    filename './docker/development/Dockerfile.ios'
+                    args '-v ${WORKSPACE}/artifacts:/artifacts  -e VITE_API_URL=${VITE_API_URL} -e LIB_PROJECT_NAME=${LIB_PROJECT_NAME} -e LIB_GIT_SOURCE=${LIB_GIT_SOURCE}'
+                }
+            }
             steps {
                 echo 'Building for iOS...'
 
                 sh '''
-                    ${BUILD_USER}@${BUILD_HOST} 'cd ~/Documents && ./${PROJECT_NAME}/scripts/development/build.ios.sh
+                    ssh ${BUILD_USER}@${BUILD_HOST}  "PROJECT_NAME=${PROJECT_NAME} bash -s" < ./scripts/development/build.ios.sh
                 '''
 
-                archiveArtifacts artifacts: 'artifacts/*.apk', fingerprint: true
+                archiveArtifacts artifacts: 'artifacts/*.ipa', fingerprint: true
             }
         }
     }

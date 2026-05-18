@@ -25,17 +25,17 @@ set -euo pipefail
 
 LIB_DIR="../${LIB_PROJECT_NAME}"
 
-# Build UI library and app
+# Build UI library
 rm -rf "${LIB_DIR}"
 git clone -b development "${LIB_GIT_SOURCE}" "${LIB_DIR}"
+npm i --prefix "${LIB_DIR}"
 
+# Build app
 npm install
-npm install  --prefix "${LIB_DIR}" # Temp
-npm run build:library --prefix "${LIB_DIR}" # Temp
+npm install "${LIB_DIR}"
+npm run build:library --prefix "${LIB_DIR}"
 npm run build:development
 npx cap sync ios
-
-# Build iOS app
 npm run ios:debug
 
 # Extract artifacts

@@ -30,10 +30,10 @@ pipeline {
             steps {
                 echo 'Deploying...'
                 sh '''
-                    ssh ${DEPLOY_USER}@${DEPLOY_HOST} '
+                    ssh ${DEPLOY_USER}@${DEPLOY_HOST} "
                         cd ~/Documents/${PROJECT_NAME}
                         PROJECT_NAME=${PROJECT_NAME} bash -s
-                    ' < ./scripts/development/deploy.sh
+                    " < ./scripts/development/deploy.sh
                 '''
             }
         }
